@@ -8,7 +8,6 @@ const Navbar = () => {
       <Link to="/login">Log In</Link>
       <Link to="/signup">Sign Up</Link>
       <Link to="/cart">Cart</Link>
-      {/* <Link to="/payment">Cart</Link> */}
     </div>
   );
 };
