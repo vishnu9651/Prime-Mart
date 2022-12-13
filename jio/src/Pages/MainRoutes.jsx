@@ -1,7 +1,9 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
+import Cart from "./Cart";
 import Homepage from "./Homepage";
 import Login from "./Login";
+import PaymentPage from "./PaymentPage";
 import Signup from "./Signup";
 
 const MainRoutes = () => {
@@ -11,8 +13,8 @@ const MainRoutes = () => {
         <Route path="/" element={<Homepage />}></Route>
         <Route path="/login" element={<Login />}></Route>
         <Route path="/signup" element={<Signup />}></Route>
-        {/* <Route to="/" element={}></Route>
-            <Route to="/" element={}></Route> */}
+        <Route path="/cart" element={<Cart />}></Route>
+        <Route path="/payment" element={<PaymentPage />}></Route>
       </Routes>
     </div>
   );
