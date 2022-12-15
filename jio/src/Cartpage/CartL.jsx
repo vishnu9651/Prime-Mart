@@ -112,6 +112,7 @@ const View = styled.button`
   border: none;
   margin-top: 20px;
   cursor: pointer;
+  background-color: white;
 `;
 
 const Apply = styled.button`
