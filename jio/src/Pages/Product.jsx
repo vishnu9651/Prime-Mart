@@ -3,6 +3,7 @@ import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useParams } from 'react-router-dom'
 import { getProducts } from '../Redux/AppReducer/action'
+import FilterComp from './AllProductPage/FilterComp'
 
 const Product = () => {
   const fruits = useSelector(store => store.AppReducer.fruitsveg)
@@ -41,16 +42,7 @@ const Product = () => {
 <Box mt="50px">
         <Flex flexDirection="row" w="95%" m="auto">
 
-          <Box w="800px" border="1px solid teal" position="sticky">
-            <Text>Filter</Text>
-          <Checkbox >AMUL</Checkbox>
-          <br/>
-          <Checkbox >GO</Checkbox>
-          <br/>
-          <Checkbox >PARLE</Checkbox>
-          <br/>
-          <Checkbox >PATANJALI</Checkbox>
-          </Box>
+         <FilterComp/>
 
         <Box >
         <Grid templateColumns='repeat(4, 1fr)' gap={6} >
