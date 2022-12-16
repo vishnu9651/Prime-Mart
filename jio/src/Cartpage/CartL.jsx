@@ -104,7 +104,7 @@ const ApplyCoupanTitle = styled.h3`
 
 const CoupanInput = styled.input`
   width: 280px;
-  padding:5px;
+  padding: 5px;
   ${mobile({ margin: "20px" })}
 `;
 
