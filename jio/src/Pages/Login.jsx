@@ -21,7 +21,7 @@ const Login = () => {
               <Input mt={4}  placeholder='Enter your Email id' value={input} onChange={(e)=>setInput(e.target.value)}></Input>
               {
                 !isError?(
-                  <FormHelperText>Use 8 or more characters with a mix of letters & numbers</FormHelperText>
+                  <FormHelperText>Use 8 or more characters with a mix of letters & number</FormHelperText>
                 ):(
                  <FormErrorMessage>Password needed.</FormErrorMessage>
                 )
