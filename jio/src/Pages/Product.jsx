@@ -12,7 +12,6 @@ const Product = () => {
   // const location = useLocation()
   // const [searchParams] = useSearchParams()
   
-  
   useEffect(() => {
     // if(location || books.length === 0){
       //   const sortBy = searchParams.get("sort")
