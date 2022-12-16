@@ -24,9 +24,11 @@ const getProductError = () => {
 const getProducts = (params) => (dispatch) => {
     dispatch(getProductRequest())
     return axios
-    .get(`http://localhost:8080/fruitsveg`, params)
+    // .get(`http://localhost:8080/fruitsveg`, params)
+    .get(`https://finaldata.onrender.com/jiodata`)
     .then(r => {
-      dispatch(getProductSuccess(r.data))
+        // console.log("30",r.data)
+      dispatch(getProductSuccess(r.data[params]))
     })
     .catch(e => {
         console.log(e)

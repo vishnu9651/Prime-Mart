@@ -6,9 +6,9 @@ import Product from "./Pages/Product";
 function App() {
   return (
     <div className="App">
-      {/* <Navbar />
-      <MainRoutes /> */}
-      <Product/>
+      {/* <Navbar /> */}
+      <MainRoutes />
+      {/* <Product/> */}
     </div>
   );
 }
