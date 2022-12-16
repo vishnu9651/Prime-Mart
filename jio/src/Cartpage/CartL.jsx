@@ -42,7 +42,7 @@ const CartL = () => {
         </Coupan>
 
         <FullPayment>
-          <h3>payment details</h3>
+          <h3>Payment details</h3>
           <Payment>
             <p>MRP Total</p>
             <p>₹184.00</p>
@@ -136,6 +136,7 @@ const Payment = styled.div`
   display: flex;
   justify-content: space-around;
   align-items: flex-start;
+
 `;
 
 const PlaceOrder = styled.button`
@@ -177,6 +178,7 @@ const Left = styled.div`
 `;
 const Mid = styled.div`
   flex: 1;
+  margin-top: 50px;
 `;
 const Right = styled.div`
   flex: 1;
@@ -190,12 +192,12 @@ const Button = styled.button`
   border: 1px solid transparent;
   width: 40px;
   height: 40px;
-  font-size: 32px;
+  font-size: 22px;
   border-radius: 50%;
   color: white;
   background-color: #008ecc;
   opacity: 0.9;
-  margin-top: 10px;
+  margin-bottom: 10px;
 `;
 
 const Quantity = styled.p`
