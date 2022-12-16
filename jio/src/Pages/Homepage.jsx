@@ -1,5 +1,7 @@
+import { Box } from '@chakra-ui/react'
 import React from 'react'
 import DailyKitchenVishnu from '../HomePageVishnu/DailyKitchenVishnu/DailyKitchenVishnu'
+import Footer from '../HomePageVishnu/FooterVishnu/FooterVishnu'
 import HealthAndPersonalVishnu from '../HomePageVishnu/HealthAndPersonalVishnu/HealthAndPersonalVishnu'
 import HomeAndCleaningVishnu from '../HomePageVishnu/HomeAndCleaningVishnu/HomeAndCleaningVishnu'
 import { JioSImPosterVishnu } from '../HomePageVishnu/PosterVishnu/JioSimPosterVishnu'
@@ -14,7 +16,8 @@ import TreandingBrandVishnu from '../HomePageVishnu/TreandingBrand/TreandingBran
 
 const Homepage = () => {
   return (
-    <div>
+    <div >
+      <Box>
       <SliderHomeVishnu />
       <PosterVishnu />
       <HomeCarousel />
@@ -28,6 +31,8 @@ const Homepage = () => {
       <SliderMedicalThreeVishnu />
       <SliderMobileThreeVishnu />
       <DailyKitchenVishnu />
+      <Footer />
+      </Box>
     </div>
   )
 }
