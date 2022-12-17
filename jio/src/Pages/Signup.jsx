@@ -13,7 +13,8 @@ const Signup = () => {
   let random
   const change=()=>{
    random = 9999-Math.ceil(Math.random()*1000)
-    setAlert('hello')
+   random = String(random)
+    setAlert(random)
     console.log('ins',otpalert)
    
     alert(`Your OTP is'${random}`)
@@ -23,7 +24,7 @@ const Signup = () => {
   console.log('r',)
   const check=()=>{
    
-    if(otp.length<4){
+    if(otp!==otpalert){
      <Alert status='error'>
      <AlertIcon/>
      Please Enter 4 digit Number
@@ -72,3 +73,4 @@ const Signup = () => {
 }
 
 export default Signup
+
