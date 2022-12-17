@@ -1,5 +1,5 @@
 import { Box, Checkbox, Heading, Input, TagLabel, Text } from '@chakra-ui/react'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useSearchParams } from 'react-router-dom'
 
 const FilterComp = () => {
@@ -29,12 +29,13 @@ const FilterComp = () => {
 //     setSortBy(e.target.value)
 //   }
 
-//   useEffect(() => {
-//     let params = {}
-//     params.category = category
-//     sort && (params.sort = sort)
-//     setSearchParams(params)
-//   }, [category, setSearchParams, sort])
+  useEffect(() => {
+    let params = {}
+    // params.category = category
+    category && (params.category=category)
+   // sort && (params.sort = sort)
+    setSearchParams(params)
+  }, [category, setSearchParams])
   return (
     <Box>
          <Box w="250px" border="1px solid teal" mr="20px" alignItems="left">

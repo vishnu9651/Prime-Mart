@@ -1,7 +1,7 @@
 import { Box, Button, Checkbox, Flex, Grid, GridItem, Heading, Image, Spacer, Text } from '@chakra-ui/react'
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { useParams } from 'react-router-dom'
+import { useLocation, useParams, useSearchParams } from 'react-router-dom'
 import { getProducts } from '../Redux/AppReducer/action'
 import FilterComp from './AllProductPage/FilterComp'
 
@@ -10,23 +10,24 @@ const Product = () => {
   const { jiobrand} = useParams()
 
   const dispatch = useDispatch()
-  // const location = useLocation()
-  // const [searchParams] = useSearchParams()
+  const location = useLocation()
+  const [searchParams] = useSearchParams()
   
   useEffect(() => {
-    // if(location || books.length === 0){
-      //   const sortBy = searchParams.get("sort")
-      //   const getBookParams = {
-      //     params: {
-      //       category: searchParams.getAll("category"),
-      //       _sort: sortBy && "release_year",
-      //       _order: sortBy,
-      //     }
-      //   }
-          dispatch(getProducts(jiobrand))
-      // }
-  }, [jiobrand])
-  console.log(fruits)
+    if(location || fruits.length === 0){
+       // const sortBy = searchParams.get("sort")
+        const getjioParams = {
+          params: {
+            category: searchParams.getAll("category"),
+            // _sort: sortBy && "release_year",
+            // _order: sortBy,
+          }
+        }
+          dispatch(getProducts(jiobrand, getjioParams))
+      }
+  }, [jiobrand, location.search])
+  
+  
   return (
     <Box>
         <Box>
