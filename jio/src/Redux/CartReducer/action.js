@@ -54,7 +54,7 @@ export const deleteCartError = () => {
 export const getCart = () => dispatch => {
 
     dispatch(getCartRequest())
-    return axios.get("http://localhost:8080/cart")
+    return axios.get("https://cartdeployement.onrender.com/cart")
         .then((r) => { dispatch(getCartSuccess(r.data))
         })
         .catch((e) => { dispatch(getCartError()) })
@@ -65,7 +65,7 @@ export const addCart = (title) => dispatch => {
     if (title) {
         const payload = { title };
         dispatch(addCartRequest())
-        return axios.post("http://localhost:8080/cart", payload).then((r) => {
+        return axios.post("https://cartdeployement.onrender.com/cart", payload).then((r) => {
             dispatch(addCartSuccess(r.data))
         }).catch((e) => {
 
@@ -84,7 +84,7 @@ export const addCart = (title) => dispatch => {
 
 // export const deleteCart = (id) => dispatch => {
 //     dispatch(deleteCartRequest())
-//     axios.delete(`http://localhost:8080/todos/${id}`)
+//     axios.delete(`https://cartdeployement.onrender.com/cart${id}`)
 //         .then((r) => {
 //             dispatch(deleteCartSuccess(id))
 //             dispatch(getCart())
