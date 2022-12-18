@@ -1,9 +1,11 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
+//import Bakery from "./AllProductPage/Bakery";
 import Cart from "./Cart";
 import Homepage from "./Homepage";
 import Login from "./Login";
 import PaymentPage from "./PaymentPage";
+import Product from "./Product";
 import Signup from "./Signup";
 
 const MainRoutes = () => {
@@ -11,6 +13,8 @@ const MainRoutes = () => {
     <div>
       <Routes>
         <Route path="/" element={<Homepage />}></Route>
+        <Route path="/product" element={<Product/>}></Route>
+        <Route path="/product/:jiobrand" element={<Product/>}></Route>
         <Route path="/login" element={<Login />}></Route>
         <Route path="/signup" element={<Signup />}></Route>
         <Route path="/cart" element={<Cart />}></Route>
