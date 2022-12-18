@@ -1,5 +1,5 @@
-import React, { useState } from 'react'
-import {Alert, AlertIcon, Box, Button, Circle, FormControl, FormErrorMessage, FormHelperText, FormLabel, HStack, Image, Input, InputGroup, InputLeftAddon, SimpleGrid, Text} from '@chakra-ui/react'
+import React, { useEffect, useState } from 'react'
+import {Alert, AlertIcon, Box, Button, Circle, FormControl, FormErrorMessage, FormHelperText, FormLabel, Heading, HStack, Image, Input, InputGroup, InputLeftAddon, SimpleGrid, Text} from '@chakra-ui/react'
 import {ChevronRightIcon} from '@chakra-ui/icons'
 import {useNavigate} from 'react-router-dom'
 import Login from './Login'
@@ -13,22 +13,20 @@ const Signup = () => {
   const isError = text.length<9 || text.length==0
   var random
   const change=()=>{
-   random = 9999-Math.ceil(Math.random()*1000)
-    setAlert('hello')
-    console.log('ins',otpalert)
-   
+    random = 9999-Math.ceil(Math.random()*1000)
+    random=String(random)
+    setAlert(random)
+    console.log('ins',random)
     alert(`Your OTP is'${random}`)
     !isError&&setNumber(!number)
   }
-  
-  console.log('r',)
+  console.log('state',otpalert)
   const check=()=>{
-   
-    if(otp.length<4){
-     <Alert status='error'>
-     <AlertIcon/>
-     Please Enter 4 digit Number
-     </Alert>
+   console.log(typeof(otpalert))
+    if(otp!==otpalert){
+      setErrorv(true)
+
+     console.log("hello")
     }
     else{
       navigate('/login')
@@ -56,8 +54,9 @@ const Signup = () => {
             </Circle>
           }
             {number &&<Box>
-            <Input mt={5} placeholder='Enter Your OTP' onChange={(e)=>setOtp(e.target.value)} maxLength={4}></Input>
-            <Button mt={4} w='full' color='white' bg='#008ECC' onClick={check} >Verify</Button>
+            <Input mt={5} placeholder='Enter Your OTP' type="number" onChange={(e)=>setOtp(e.target.value)} maxLength={4}/>
+            <Button mt={4} w='full' color='white' _hover={"green"} bg='#008ECC' onClick={check} >Verify</Button>
+            {errorv? <Text color="red"> Enter correct otp !</Text>:<h1></h1>}
             </Box>
             }
           </FormControl>
