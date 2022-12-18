@@ -1,4 +1,5 @@
 import { Box, Button, Checkbox, Flex, Grid, GridItem, Heading, Image, Spacer, Text } from '@chakra-ui/react'
+
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useLocation, useParams, useSearchParams } from 'react-router-dom'
@@ -8,22 +9,29 @@ import { addCart, getCart } from '../Redux/CartReducer/action'
 const Product = () => {
   const fruits = useSelector(store => store.AppReducer.fruitsveg)
   //console.log(fruits)
+
   const { jiobrand} = useParams()
 
   const dispatch = useDispatch()
   const location = useLocation()
+
   const [datasearchParams] = useSearchParams()
+
   
   useEffect(() => {
     if(location || fruits.length === 0){
        // const sortBy = searchParams.get("sort")
         const getjioParams = {
           params: {
+
             category: datasearchParams.getAll("category"),
+
+           
             // _sort: sortBy && "release_year",
             // _order: sortBy,
           }
         }
+
         //console.log(getjioParams)
           dispatch(getProducts(jiobrand, getjioParams))
       }
@@ -95,6 +103,7 @@ const Product = () => {
 <Box mt="50px">
         <Flex flexDirection="row" w="95%" m="auto">
 
+
          {/* <FilterComp/> */}
          <Box>
          <Box w="250px" border="1px solid teal" mr="20px" alignItems="left">
@@ -149,6 +158,7 @@ const Product = () => {
 
 
 
+
         <Box >
         <Grid templateColumns='repeat(4, 1fr)' gap={6} >
         {fruits.length > 0 && 
@@ -163,7 +173,8 @@ const Product = () => {
         <Box><Heading fontSize="15px" mb="5px"> {ele.title}</Heading> </Box>
         <Flex flexDirection="row"> <Text>M.R.P:</Text> <Text ml="5px" fontSize="15px" fontWeight="bold" > {ele.price}</Text></Flex>
         </Box>
-        <Box mt="50px" mb="30x"><Button colorScheme='blue' w="100%" onClick={() =>sendData(ele)}>Add To Cart</Button></Box>
+
+        <Box mt="50px" mb="30x"><Button colorScheme='blue' w="100%" onClick={() =>sendData(ele)}>Add To Cart</Button></Bo
       </GridItem>
         )
       })}
