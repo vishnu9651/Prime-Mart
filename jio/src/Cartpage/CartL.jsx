@@ -1,32 +1,74 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { DeleteIcon } from "@chakra-ui/icons";
 import styled from "styled-components";
 import { mobile, tablet } from "../responsive";
 
 const CartL = () => {
+  const [users, setUsers] = useState([]);
+  const getProducts = async () => {
+    const res = await fetch(`https://finaldata.onrender.com/jiodata`);
+    console.log(res);
+    const data = await res.json();
+    console.log("data", data);
+
+    setUsers(data.fruitsveg);
+  };
+
+  useEffect(() => {
+    getProducts();
+  }, []);
+
+  const [price, setPrice] = useState(0);
+
+  const handleRemove = (id) => {
+    const arr = users.filter((item) => item.id !== id);
+    setUsers(arr);
+    handlePrice();
+  };
+
+  const handlePrice = () => {
+    let ans = 0;
+    users.map((item) => (ans += +item.price));
+    setPrice(ans);
+  };
+
+  useEffect(() => {
+    handlePrice();
+  });
+
   return (
     <Wrapper>
       <LeftWrapper>
         <ItemWrapper>
           <BasketWrapper>
-            <BasketItem>Groceries Basket (2 items)</BasketItem>
-            <BasketItem>₹146.00</BasketItem>
+            <BasketItem>Groceries Basket</BasketItem>
+            <BasketItem>{price}</BasketItem>
           </BasketWrapper>
-          <Item>
-            <Left>
-              <ItemImg src="https://www.jiomart.com/images/product/75x75/490001795/maaza-mango-drink-1-2-l-bottle-product-images-o490001795-p490001795-0-202203171010.jpg" />
-            </Left>
-            <Mid>
-              <Title>Maaza Mango Drink 1.2 L</Title>
-              <Price>₹55.00</Price>
-              <Seller>Sold By Reliance Retail</Seller>
-            </Mid>
-            <Right>
-              <Button>-</Button>
-              <Quantity>1</Quantity>
-              <Button>+</Button>
-            </Right>
-          </Item>
-          <hr />
+          {users.map((item) => {
+            return (
+              <div key={item.id}>
+                <Item>
+                  <Left>
+                    <ItemImg src={item.img} />
+                  </Left>
+                  <Mid>
+                    <Title>{item.title}</Title>
+                    <Price>₹{item.price}</Price>
+                    <Seller>Sold By Reliance Retail</Seller>
+                    <Delete onClick={() => handleRemove(item.id)}>
+                      <DeleteIcon />
+                    </Delete>
+                  </Mid>
+                  <Right>
+                    <Button>-</Button>
+                    <Quantity>1</Quantity>
+                    <Button>+</Button>
+                  </Right>
+                </Item>
+                <hr />
+              </div>
+            );
+          })}
         </ItemWrapper>
       </LeftWrapper>
       <RightWrapper>
@@ -45,7 +87,7 @@ const CartL = () => {
           <h3>Payment details</h3>
           <Payment>
             <p>MRP Total</p>
-            <p>₹184.00</p>
+            <p>₹{price}</p>
           </Payment>
           <hr />
           <Payment>
@@ -55,7 +97,7 @@ const CartL = () => {
           <hr />
           <Payment>
             <h5>Total Amount</h5>
-            <p>₹149.00</p>
+            <p>₹{price - 35}</p>
           </Payment>
         </FullPayment>
         <Payment>
@@ -136,7 +178,6 @@ const Payment = styled.div`
   display: flex;
   justify-content: space-around;
   align-items: flex-start;
-
 `;
 
 const PlaceOrder = styled.button`
@@ -198,6 +239,12 @@ const Button = styled.button`
   background-color: #008ecc;
   opacity: 0.9;
   margin-bottom: 10px;
+`;
+
+const Delete = styled.button`
+  width: 100px;
+  margin-top: 20px;
+  margin-bottom: 20px;
 `;
 
 const Quantity = styled.p`

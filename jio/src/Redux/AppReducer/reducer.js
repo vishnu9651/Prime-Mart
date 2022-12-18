@@ -1,7 +1,10 @@
+
 import * as types from "./actionTypes"
+
 
 const initialState = {
   fruitsveg: [],
+//    fruitsveg: getLocalCartData(),
     isLoading: false,
     isError: false
 }
@@ -19,5 +22,11 @@ const reducer = (oldState = initialState, action) => {
             return oldState;    
     }
 }
+
+
+
+ 
+
+
 
 export { reducer }
