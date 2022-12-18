@@ -1,13 +1,13 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import NavbarVishnu from "../HomePageVishnu/NavbarVishnu/NavbarVishnu";
+import TabsVishnu from "../HomePageVishnu/NavbarVishnu/TabsVishnu";
 
 const Navbar = () => {
   return (
     <div>
-      <Link to="/">Home</Link>
-      <Link to="/login">Log In</Link>
-      <Link to="/signup">Sign Up</Link>
-      <Link to="/cart">Cart</Link>
+      <NavbarVishnu  />
+      <TabsVishnu />
     </div>
   );
 };
