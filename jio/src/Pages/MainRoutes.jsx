@@ -1,5 +1,6 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
+//import Bakery from "./AllProductPage/Bakery";
 import Cart from "./Cart";
 import Homepage from "./Homepage";
 import Login from "./Login";
