@@ -27,8 +27,8 @@ const getProducts = (params) => (dispatch) => {
     // .get(`http://localhost:8080/fruitsveg`, params)
     .get(`https://finaldata.onrender.com/jiodata`)
     .then(r => {
-        // console.log("30",r.data)
-      dispatch(getProductSuccess(r.data[params]))
+     console.log("30",r.data.fruitsveg)
+      dispatch(getProductSuccess(r.data.fruitsveg))
     })
     .catch(e => {
         console.log(e)

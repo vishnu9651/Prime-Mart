@@ -1,5 +1,6 @@
 import { Box, Button, FormControl, FormErrorMessage, FormHelperText, FormLabel, Image, Input, SimpleGrid, Stack, Text } from '@chakra-ui/react'
 import React, { useState } from 'react'
+import { Link } from 'react-router-dom'
 
 const Login = () => {
   const [input,setInput] = useState('')
@@ -28,7 +29,7 @@ const Login = () => {
               }
               <Input mt={4} placeholder='Enter your password'></Input>
               <Input mt={4} placeholder='Enter you password again'></Input>
-              <Button mt={4} w='full'>Verify</Button>
+              <Link to="/cart"><Button mt={4} w='full'>Verify</Button></Link>
       </FormControl>
       </Box>
       </Box>

@@ -3,6 +3,7 @@ import {Alert, AlertIcon, Box, Button, Circle, FormControl, FormErrorMessage, Fo
 import {ChevronRightIcon} from '@chakra-ui/icons'
 import {useNavigate} from 'react-router-dom'
 import Login from './Login'
+import { useSelector } from 'react-redux'
 const Signup = () => {
   const navigate = useNavigate('')
   const [number,setNumber] = useState(false)
@@ -11,6 +12,8 @@ const Signup = () => {
   const [otpalert,setAlert] = useState('')
   const [errorv,setErrorv]=useState(false)
   const isError = text.length<9 || text.length==0
+  const fruitss = useSelector(store => store.AppReducer.fruitsveg)
+  console.log("dadad",fruitss)
   var random
   const change=()=>{
     random = 9999-Math.ceil(Math.random()*1000)
