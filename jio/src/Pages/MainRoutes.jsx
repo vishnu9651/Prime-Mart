@@ -3,10 +3,10 @@ import { Route, Routes } from "react-router-dom";
 //import Bakery from "./AllProductPage/Bakery";
 import Cart from "./Cart";
 import Homepage from "./Homepage";
-import Login from "./Login";
+import Signup from "./Signup";
 import PaymentPage from "./PaymentPage";
 import Product from "./Product";
-import Signup from "./Signup";
+import Login from "./Login";
 
 const MainRoutes = () => {
   return (

@@ -4,108 +4,108 @@ import styled from "styled-components";
 import { mobile, tablet } from "../responsive";
 
 const CartL = () => {
-  const [users, setUsers] = useState([]);
-  const getProducts = async () => {
-    const res = await fetch(`https://cartdeployement.onrender.com/cart`);
-    console.log(res);
-    const data = await res.json();
-    console.log("data", data.data);
+//   const [users, setUsers] = useState([]);
+//   const getProducts = async () => {
+//     const res = await fetch(`https://cartdeployement.onrender.com/cart`);
+//     console.log(res);
+//     const data = await res.json();
+//     console.log("data", data.data);
 
-    setUsers(data);
-  };
+//     setUsers(data);
+//   };
 
-  useEffect(() => {
-    getProducts();
-  }, []);
+//   useEffect(() => {
+//     getProducts();
+//   }, []);
 
-  const [price, setPrice] = useState(0);
+//   const [price, setPrice] = useState(0);
 
-  const handleRemove = (id) => {
-    const arr = users.filter((item) => item.id !== id);
-    setUsers(arr);
-    handlePrice();
-  };
+//   const handleRemove = (id) => {
+//     const arr = users.filter((item) => item.id !== id);
+//     setUsers(arr);
+//     handlePrice();
+//   };
 
-  const handlePrice = () => {
-    let ans = 0;
-    users.map((item) => (ans += +item.price));
-    setPrice(ans);
-  };
+//   const handlePrice = () => {
+//     let ans = 0;
+//     users.map((item) => (ans += +item.price));
+//     setPrice(ans);
+//   };
 
-  useEffect(() => {
-    handlePrice();
-  });
-console.log(users)
-  return (
-    <Wrapper>
-      <LeftWrapper>
-        <ItemWrapper>
-          <BasketWrapper>
-            <BasketItem>Groceries Basket</BasketItem>
-            <BasketItem>{price}</BasketItem>
-          </BasketWrapper>
-          {users.map((item) => {
-            return (
-              <div key={item.id}>
-                <Item>
-                  <Left>
-                    <ItemImg src={item.img} />
-                  </Left>
-                  <Mid>
-                    <Title>{item.title}</Title>
-                    <Price>₹{item.price}</Price>
-                    <Seller>Sold By Reliance Retail</Seller>
-                    <Delete onClick={() => handleRemove(item.id)}>
-                      <DeleteIcon />
-                    </Delete>
-                  </Mid>
-                  <Right>
-                    <Button >-</Button>
-                    <Quantity>1</Quantity>
-                    <Button >+</Button>
-                  </Right>
-                </Item>
-                <hr />
-              </div>
-            );
-          })}
-        </ItemWrapper>
-      </LeftWrapper>
-      <RightWrapper>
-        <Coupan>
-          <CoupanTitle>
-            <ApplyCoupanTitle>Apply Coupan</ApplyCoupanTitle>
-            <CoupanInput type="text" placeholder="enter your coupan code" />
-          </CoupanTitle>
-          <div>
-            <View>VIEW ALL</View>
-            <Apply>APPLY</Apply>
-          </div>
-        </Coupan>
+//   useEffect(() => {
+//     handlePrice();
+//   });
+// console.log(users)
+//   return (
+//     <Wrapper>
+//       <LeftWrapper>
+//         <ItemWrapper>
+//           <BasketWrapper>
+//             <BasketItem>Groceries Basket</BasketItem>
+//             <BasketItem>{price}</BasketItem>
+//           </BasketWrapper>
+//           {users.map((item) => {
+//             return (
+//               <div key={item.id}>
+//                 <Item>
+//                   <Left>
+//                     <ItemImg src={item.img} />
+//                   </Left>
+//                   <Mid>
+//                     <Title>{item.title}</Title>
+//                     <Price>₹{item.price}</Price>
+//                     <Seller>Sold By Reliance Retail</Seller>
+//                     <Delete onClick={() => handleRemove(item.id)}>
+//                       <DeleteIcon />
+//                     </Delete>
+//                   </Mid>
+//                   <Right>
+//                     <Button >-</Button>
+//                     <Quantity>1</Quantity>
+//                     <Button >+</Button>
+//                   </Right>
+//                 </Item>
+//                 <hr />
+//               </div>
+//             );
+//           })}
+//         </ItemWrapper>
+//       </LeftWrapper>
+//       <RightWrapper>
+//         <Coupan>
+//           <CoupanTitle>
+//             <ApplyCoupanTitle>Apply Coupan</ApplyCoupanTitle>
+//             <CoupanInput type="text" placeholder="enter your coupan code" />
+//           </CoupanTitle>
+//           <div>
+//             <View>VIEW ALL</View>
+//             <Apply>APPLY</Apply>
+//           </div>
+//         </Coupan>
 
-        <FullPayment>
-          <h3>Payment details</h3>
-          <Payment>
-            <p>MRP Total</p>
-            <p>₹{price}</p>
-          </Payment>
-          <hr />
-          <Payment>
-            <p>Product discount</p>
-            <p>- ₹35.00</p>
-          </Payment>
-          <hr />
-          <Payment>
-            <h5>Total Amount</h5>
-            <p>₹{price - 35}</p>
-          </Payment>
-        </FullPayment>
-        <Payment>
-          <PlaceOrder>Place Order</PlaceOrder>
-        </Payment>
-      </RightWrapper>
-    </Wrapper>
-  );
+//         <FullPayment>
+//           <h3>Payment details</h3>
+//           <Payment>
+//             <p>MRP Total</p>
+//             <p>₹{price}</p>
+//           </Payment>
+//           <hr />
+//           <Payment>
+//             <p>Product discount</p>
+//             <p>- ₹35.00</p>
+//           </Payment>
+//           <hr />
+//           <Payment>
+//             <h5>Total Amount</h5>
+//             <p>₹{price - 35}</p>
+//           </Payment>
+//         </FullPayment>
+//         <Payment>
+//           <PlaceOrder>Place Order</PlaceOrder>
+//         </Payment>
+//       </RightWrapper>
+//     </Wrapper>
+//   );
 };
 
 const Wrapper = styled.div`
