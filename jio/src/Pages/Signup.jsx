@@ -1,73 +1,64 @@
-import React, { useEffect, useState } from 'react'
-import {Alert, AlertIcon, Box, Button, Circle, FormControl, FormErrorMessage, FormHelperText, FormLabel, Heading, HStack, Image, Input, InputGroup, InputLeftAddon, SimpleGrid, Text} from '@chakra-ui/react'
-import {ChevronRightIcon} from '@chakra-ui/icons'
-import {useNavigate} from 'react-router-dom'
-import Login from './Login'
-import { useSelector } from 'react-redux'
-const Signup = () => {
-  const navigate = useNavigate('')
-  const [number,setNumber] = useState(false)
-  const [text,setText] = useState('')
-  const [otp,setOtp] = useState('')
-  const [otpalert,setAlert] = useState('')
-  const [errorv,setErrorv]=useState(false)
-  const isError = text.length<9 || text.length==0
-  const fruitss = useSelector(store => store.AppReducer.fruitsveg)
-  console.log("dadad",fruitss)
-  var random
-  const change=()=>{
-    random = 9999-Math.ceil(Math.random()*1000)
-    random=String(random)
-    setAlert(random)
-    console.log('ins',random)
-    alert(`Your OTP is'${random}`)
-    !isError&&setNumber(!number)
-  }
-  console.log('state',otpalert)
-  const check=()=>{
-   console.log(typeof(otpalert))
-    if(otp!==otpalert){
-      setErrorv(true)
+import { Box, Button, FormControl, FormErrorMessage, FormHelperText, FormLabel, Image, Input, SimpleGrid, Stack, Text } from '@chakra-ui/react'
+import React, { useState } from 'react'
+import { Link } from 'react-router-dom'
+import axios from 'axios'
+const Signup= () => {
+  const [data,setData] = useState({
+    name:'',
+    email:'',
+    number:'',
+    password:'',
+    cpassword:''
+  })
 
-     console.log("hello")
-    }
-    else{
-      navigate('/login')
-    }
+  // console.log(data)
+  const getdata=(e)=>{
+ const {name,value} = e.target
+     setData(()=>{
+      return{
+        ...data,
+        [name]:value
+      }
+     })
+  }
+  //console.log(data)
+
+  const sendData=(e)=>{
+    e.preventDefault()
+    const {name,email,number,password,cpassword} = data
+
+    axios.post('http://localhost:3500/register',{
+      name,email,number,password,cpassword
+    }).then((res)=>{
+      console.log(res)
+    }).catch((err)=>{
+      console.log(err)
+    })
   }
   return (
     <div>
-      <SimpleGrid w={['90%','90%','95%','80%']} h='auto' columns={[1,1,2,2]}    margin='auto' mt='2cm'  >
-        <Box>
+      <SimpleGrid w={{base:"90%",md:'90%',lg:'80%'}} h='auto' columns={[1,1,2,2]} margin='auto' mt='2cm'  >
+         <Box >
         <Image src='https://www.jiomart.com/msassets/images/login-banner.jpg' borderRadius='10px' alt='jio'></Image>
         </Box>
-        <Box>
-          <Box ml={['none','none','2cm','5cm']}  w={['10cm','10cm','8cm','auto']} mt={['1cm','1cm','2cm','2cm']} mr={['2cm','2cm','1cm','1cm']}>
-          <FormControl>
-            <FormLabel>
-            <Text fontWeight='medium' fontSize='2xl'>Sign In </Text>
-              <Text>Sign In, to access to your Orders,Offers and Wishlist</Text>
-            </FormLabel>
-            <InputGroup>
-            <InputLeftAddon children='+91' mt='1cm'/>
-            <Input mt='1cm' type='tel' borderColor='gray' maxLength={10} value={text} onChange={(e)=>setText(e.target.value)} placeholder='Mobile Number'/>
-            </InputGroup>
-           {!number &&<Circle mt={4} bg='#008ECC' ml='4cm' size='50px' as='button' onClick={change}>
-              <ChevronRightIcon size='20px'/>
-            </Circle>
-          }
-            {number &&<Box>
-            <Input mt={5} placeholder='Enter Your OTP' type="number" onChange={(e)=>setOtp(e.target.value)} maxLength={4}/>
-            <Button mt={4} w='full' color='white' _hover={"green"} bg='#008ECC' onClick={check} >Verify</Button>
-            {errorv? <Text color="red"> Enter correct otp !</Text>:<h1></h1>}
-            </Box>
-            }
-          </FormControl>
-          </Box>
-          
-        </Box>
+      <Box w='70%'   mt={[2,2,1,1]}>
+      <Box ml='4cm'  margin='auto'>
+      <FormControl  >
+        <FormLabel>
+        <Text fontWeight='medium' fontSize='2xl'>Sign Up</Text> 
+              <Text>Please enter your details</Text></FormLabel>
+              <Input  mt={4} name='name' value={data.name} onChange={getdata} placeholder='Your First Name'></Input>
+              <Input  mt={4} name='email' value={data.email} onChange={getdata} placeholder='Mobile No.'></Input>
+              <Input mt={4} name='number' value={data.number} onChange={getdata} placeholder='Enter your Email id' ></Input>
+              <Input mt={4} name='password' value={data.password} onChange={getdata} placeholder='Enter your password'></Input>
+              <Input mt={4} name='cpassword' value={data.cpassword} onChange={getdata} placeholder='Enter you password again'></Input>
+              <Link to=""><Button mt={4} w='full' onClick={sendData} >Verify</Button></Link>
+      </FormControl>
+      </Box>
+      </Box>
       </SimpleGrid>
     </div>
   )
 }
+
 export default Signup

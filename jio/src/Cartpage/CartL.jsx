@@ -8,6 +8,7 @@ const CartL = () => {
   return (<div>
     <h1>cart page</h1>
   </div>)
+
 };
 
 // const Wrapper = styled.div`
