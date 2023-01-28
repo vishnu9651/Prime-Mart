@@ -8,7 +8,7 @@ import {FaUserAlt} from  "react-icons/fa";
 const NavbarVishnu=()=>{
 
 
-    return (<div >
+    return (<div style={{overflow: "visible"}}>
 <Flex  color="white" fontWeight={"bold"} border={"2px solid #5ce1e6"} padding="5px" backgroundColor={"#5ce1e6"} justifyContent="space-between">
     <Box  ><Link to="/"><img width="160" height="120" src="PrimeMart.png"/></Link></Box>
     <Box marginTop={"15px"}  borderRadius={"7px"} paddingBottom="-5px"><SearchVishnu  /></Box>

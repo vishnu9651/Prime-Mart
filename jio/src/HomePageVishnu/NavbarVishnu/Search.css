@@ -1,0 +1,13 @@
+.displayData{
+    
+    overflow: visible;
+}
+.displayData button{
+    color:brown;
+    opacity: 0.8
+}
+.displayData button :hover{
+    
+    opacity: .9;
+    color:blue;
+}

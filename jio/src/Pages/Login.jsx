@@ -29,7 +29,7 @@ const Login = () => {
               }
               <Input mt={4} placeholder='Enter your password'></Input>
               <Input mt={4} placeholder='Enter you password again'></Input>
-              <Link to="/cart"><Button mt={4} w='full'>Verify</Button></Link>
+              <Link to="/"><Button mt={4} w='full'>Verify</Button></Link>
       </FormControl>
       </Box>
       </Box>
