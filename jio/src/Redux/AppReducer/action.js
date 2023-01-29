@@ -25,7 +25,7 @@ const getProducts = (params) => (dispatch) => {
     dispatch(getProductRequest())
     return axios
     // .get(`http://localhost:8080/fruitsveg`, params)
-    .get(`https://finaldata.onrender.com/jiodata`)
+    .get(`https://finaldata.onrender.com/jiodata`,params)
     .then(r => {
      console.log("30",r.data.fruitsveg)
       dispatch(getProductSuccess(r.data.fruitsveg))

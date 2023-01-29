@@ -11,10 +11,11 @@ const images = [
   ];
 const SliderHomeVishnu=()=>{
 
-    return (<div className="SliderTopVishnu" >
+    return (<div style={{zIndex:-1,overflow:"visible"}}  className="SliderTopVishnu" >
 
 <SimpleImageSlider 
-        width="100%"
+    style={{zIndex:-1}}
+    width="100%"
         navSize={40}
     
         height="350px"
@@ -22,6 +23,7 @@ const SliderHomeVishnu=()=>{
         showBullets={true}
         showNavs={true}
         autoPlay={true}
+
       />
       
     </div>)
