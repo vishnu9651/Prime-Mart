@@ -52,7 +52,8 @@ const Signup= () => {
               <Input mt={4} name='number' value={data.number} onChange={getdata} placeholder='Enter your Email id' ></Input>
               <Input mt={4} name='password' value={data.password} onChange={getdata} placeholder='Enter your password'></Input>
               <Input mt={4} name='cpassword' value={data.cpassword} onChange={getdata} placeholder='Enter you password again'></Input>
-              <Link to=""><Button mt={4} w='full' onClick={sendData} >Verify</Button></Link>
+              <Link to=""><Button mt={4} w='full' onClick={sendData} >Submit</Button></Link>
+              <Text>if you already have an account <span color='red'  fontWeight='md'> <Link to='/login'>Login</Link></span></Text>
       </FormControl>
       </Box>
       </Box>
