@@ -3,11 +3,14 @@ import {Alert, AlertIcon, Box, Button, Circle, FormControl, FormErrorMessage, Fo
 import {ChevronRightIcon} from '@chakra-ui/icons'
 import {Link, useNavigate} from 'react-router-dom'
 import Signup from './Signup'
-import { useSelector } from 'react-redux'
+import {login} from '../Redux/AuthReducer/action'
+import { useDispatch, useSelector } from 'react-redux'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import axios from 'axios'
 const Login = () => {
+  const navigate = useNavigate()
+  const dispatch = useDispatch()
     const [data,setData] = useState({
        
         email:'',
@@ -31,18 +34,22 @@ const Login = () => {
         e.preventDefault()
         const {email,password} = data
     
-        axios.post('http://localhost:3500/register',{
-          email,password
-        }).then((res)=>{
-          console.log(res)
-          if(res){
-            toast.success('Registered Succefully',{
-                position:'top-center'
-            })
+        // axios.post('http://localhost:3500/login',{
+        //   email,password
+        // }).then((res)=>{
+        //   console.log(res.data)
+         
+        //     toast.success('Registered Succefully',{
+        //         position:'top-center'
+        //     })
+        //     navigate('/')
+        
+        // }).catch((err)=>{
+        //   console.log(err)
+        // })
+        if(email && password){
+          dispatch(Login({email,password}))
         }
-        }).catch((err)=>{
-          console.log(err)
-        })
       }
       return (
         <div>
@@ -57,7 +64,7 @@ const Login = () => {
             <Text fontWeight='medium' fontSize='2xl'>Login</Text> 
                   <Text>Please enter your details</Text></FormLabel>
                 
-                  <Input  mt={4} name='email' value={data.email} onChange={getdata} placeholder='Mobile No.'></Input>
+                  <Input  mt={4} name='email' value={data.email} onChange={getdata} placeholder='Email'></Input>
                 
                   <Input mt={4} name='password' value={data.password} onChange={getdata} placeholder='Enter your password'></Input>
                  

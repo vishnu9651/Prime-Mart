@@ -1,172 +1,185 @@
 import React, { useEffect, useState } from "react";
-import { DeleteIcon } from "@chakra-ui/icons";
+import { AddIcon, DeleteIcon, MinusIcon } from "@chakra-ui/icons";
 import styled from "styled-components";
 import { mobile, tablet } from "../responsive";
+import './cart.css'
+import {AiFillPlusCircle} from 'react-icons'
+import { Box, Button, Circle, Divider, Flex, HStack, Image, SimpleGrid, Spacer, Text } from "@chakra-ui/react";
 
 const CartL = () => {
+  const products = [
+    { 
+        id: 'product1',
+        url: 'https://rukminim1.flixcart.com/image/150/150/kapoo7k0/electric-kettle/p/6/s/pigeon-favourite-original-imafs7xhj5uwgrh4.jpeg?q=70', 
+        detailUrl: 'https://rukminim1.flixcart.com/image/416/416/kapoo7k0/electric-kettle/p/6/s/pigeon-favourite-original-imafs7xhj5uwgrh4.jpeg?q=70',
+        title: {
+            shortTitle: 'Home & Kitchen',
+            longTitle: 'Pigeon FAVOURITE Electric Kettle  (1.5 L, Silver, Black)'
+        }, 
+        price: {
+            mrp: 1195,
+            cost: 625,
+            discount: '47%'
+        },
+        description: 'This electric kettle from Pigeon will soon become a travelers best friend, a hostelite saviour and an answer to all the midnight cravings. With this handy appliance, you can boil water and use it to make instant noodles, packet soup, coffee and green tea.',
+        discount: 'Extra 10% Off', 
+        tagline: 'Deal of the day' 
+    },
+    { 
+        id: 'product2',
+        url: 'https://rukminim1.flixcart.com/image/416/416/kl6wx3k0/sandwich-maker/8/r/d/sandwich-01-flipkart-smartbuy-original-imagydds4zthxt8z.jpeg?q=70', 
+        detailUrl: 'https://rukminim1.flixcart.com/image/416/416/kl6wx3k0/sandwich-maker/8/r/d/sandwich-01-flipkart-smartbuy-original-imagydds4zthxt8z.jpeg?q=70',
+        title: {
+            shortTitle: 'Sandwich Makers',
+            longTitle: 'Flipkart SmartBuy Sandwich 01 Grill  (Black)'
+        },
+        price: {
+            mrp: 1499,
+            cost: 899,
+            discount: '40%'
+        },
+        description: 'This non-stick sandwich toaster .easy to use and very handy. Directly hold over flame to make tasty toasts and toasted sandwiches. Specially designed by keeping your needs in mind, the sandwich maker makes whatever youre doing simpler, smarter and better',
+        discount: 'From 99+5% Off', 
+        tagline: 'Pestige, Nova & more' 
+    },
+    { 
+        id: 'product3',
+        url: 'https://rukminim1.flixcart.com/image/150/150/kohigsw0/resistance-tube/c/s/e/new-adjustable-single-resistance-tube-multicolor-na-ajro-deal-original-imag2xg88mhmwxz5.jpeg?q=70', 
+        detailUrl: 'https://rukminim1.flixcart.com/image/416/416/kohigsw0/resistance-tube/c/s/e/new-adjustable-single-resistance-tube-multicolor-na-ajro-deal-original-imag2xg88mhmwxz5.jpeg?q=70', 
+        title: {
+            shortTitle: 'Fitness Gear',
+            longTitle: 'AJRO DEAL New Adjustable Single Resistance Tube (Multicolor) Resistance Tube  (Multicolor)'
+        }, 
+        price: {
+            mrp: 499,
+            cost: 166,
+            discount: '66%'
+        },
+        description: 'This unique product can tone your back muscles, reduce belly fat, improve blood circulation and also improves your body posture. It increases the stamina, energy and vitality of the body. The elastic resistance of the rubber training rope can be used to train and exercise in whichever way you want, according to your physical needs.',
+        discount: 'Upto 70% Off', 
+        tagline: 'Deal of the Day' 
+    },
+    { 
+        id: 'product4',
+        url: 'https://rukminim1.flixcart.com/image/300/300/kll7bm80/smartwatch/c/1/n/43-mo-sw-sense-500-android-ios-molife-original-imagyzyycnpujyjh.jpeg?q=70', 
+        detailUrl: 'https://rukminim1.flixcart.com/image/416/416/kll7bm80/smartwatch/c/1/n/43-mo-sw-sense-500-android-ios-molife-original-imagyzyycnpujyjh.jpeg?q=70',
+        title: {
+            shortTitle: 'Smart Watches',
+            longTitle: 'Molife Sense 500 Smartwatch  (Black Strap, Freesize)',
+        }, 
+        price: {
+            mrp: 6999,
+            cost: 4049,
+            discount: '42%'
+        },
+        description: 'The Molife Sense 500, a brilliant smartwatch with a beautiful large display. Say hello to the infinity 1.7-inch display with 2.5D curved edges. Thanks to seamless Bluetooth 5.0 connectivity, you wont have to keep waiting. Bring a change to your outfit every day with changeable straps. A splash of color every day keeps the boredom away.',
+        discount: 'Grab Now', 
+        tagline: 'Best Seller' 
+    },
+    { 
+        id: 'product5',
+        url: 'https://rukminim1.flixcart.com/image/416/416/k3uhhu80/hair-dryer/n/m/t/nova-2800-w-professional-nhp-8220-original-imafmvwfhmzsxdrw.jpeg?q=70',
+        detailUrl: 'https://rukminim1.flixcart.com/image/416/416/k3uhhu80/hair-dryer/n/m/t/nova-2800-w-professional-nhp-8220-original-imafmvwfhmzsxdrw.jpeg?q=70', 
+        title: {
+            shortTitle: 'Trimmers',
+            longTitle: 'Nova Professional NHP 8220 Hair Dryer  (1800 W, Multicolor)'
+        }, 
+        price: {
+            mrp: 1899,
+            cost: 1124,
+            discount: '40%'
+        },
+        description: 'The Molife Sense 500, a brilliant smartwatch with a beautiful large display. Say hello to the infinity 1.7-inch display with 2.5D curved edges. Thanks to seamless Bluetooth 5.0 connectivity, you wont have to keep waiting. Bring a change to your outfit every day with changeable straps. A splash of color every day keeps the boredom away.',
+        discount: 'From ₹499', 
+        tagline: 'Kubra, Nova & more' 
+    }
+  ]
+ // const [produc,setProducts] = useState()
   
-  return (<div>
-    <h1>cart page</h1>
-  </div>)
+  const remove=(e)=>{
+    const new_products = products.filter((el)=>el.id!== e.id)
+    console.log(new_products)
+  }
+  return (
+  <>
+  <Box w={{sm:'80%',md:"95%",lg:'80%'}}  margin='auto' mt='1cm' spacing='20px'>
+   <SimpleGrid columns={[1,2,2]}>
+    <Box>
+      <Flex>
+      <Box>
+        <Text fontWeight='semibold' fontSize='1.4rem'>My Cart()</Text>
+      </Box>
+      </Flex>
+      <Box mt='20px'>
+         <Box display='flex' px='20px' justifyContent='space-between'>
+          <Text fontSize='1.3rem' fontWeight='medium'>Your Items</Text>
+          <Text fontSize='1.3rem' fontWeight='medium'>₹40</Text>
+         </Box>
+         <Box px='10px' mt='10px' bg='lightblue'>
+        <Text fontSize='15px' align='left'>Shop groceries worth ₹1499 & get sugar at ₹9 (Offer is applicable only on products sold by Reliance Retail . For specific exclusions & offer details refer T&C)</Text>
+         </Box>
+      </Box>
+    { products.map((e,index)=>(
+      <Box key={index} display='flex' px='10px' >
+        <Box display='flex' mt='1cm'  justifyContent='space-between' w={{sm:'60%',md:"50%",lg:'50%'}} >
+          
+         <Box>
+          <Image boxSize='100px' src={e.detailUrl}></Image>
+         </Box>
+         <Spacer/>
+         <Box>
+          <Text fontSize={{sm:'6px',md:"15px",lg:"15px"}} fontWeight='medium'>{e.title.shortTitle}</Text>
+          <Text mt={1} align='left' fontSize={{sm:'6px',md:"15px",lg:"15px"}} fontWeight='medium'>₹{e.price.cost}</Text>
+          <Text mt={1} align='left' fontSize={{sm:'6px',md:"15px",lg:"15px"}} fontWeight='medium'>Sold by<span color="blue">Reliance</span></Text>
+         </Box>
+        
+        </Box>
+         <Box   mt='1cm' w='50%'>
+          <Button bg='lightblue' ml='50%' borderRadius='20px' onClick={()=>remove(e)}>Remove</Button>
+          <Box display='flex' >
+         <Circle  bg='lightblue'   size='30px' ml='60%' mt='25%' as='button'><AddIcon/></Circle> 
+          <Text px='5px' mt='25%'>1</Text>
+          <Circle bg='lightblue' size='30px'  mt='25%' as='button'><MinusIcon /></Circle>
+          </Box>
+         </Box>
+        
+      </Box>
+     
+    ))
+      }
+    </Box>
+    <Box >
+    <Box py='10px' px='30px' mt='1cm'>
+              <Text align ='left' mt='1cm' fontSize='20px' fontWeight='medium'>Payment Details</Text>
+              <HStack px='20px' mt='10px'>
+              <Text color='grey'>MRP TOTAL</Text>
+              <Spacer/>
+              <Text  color='black' fontWeight='bold'>₹55</Text>
+              </HStack>
+              <Divider></Divider>
+              <HStack px='20px' mt='10px'>
+              <Text color='grey'>PRODUCT DISCOUNT</Text>
+              <Spacer/>
+              <Text  color='black' fontWeight='bold' >₹-55</Text>
+              </HStack>
+              <HStack px='20px' mt='10px'>
+              <Text color='black' fontWeight='medium'>Total Amount</Text>
+              <Spacer/>
+              <Text color='black' fontWeight='bold'>{Math.round(products.reduce((a,c)=>a+c.price.mrp,0))}</Text>
+              </HStack>
+               <Button bg='#008ECC' color='white' alignSelf='right'>Make Payment</Button>
+
+            </Box>
+    </Box>
+    </SimpleGrid>
+    </Box>  
+  </>)
 
 };
 
-// const Wrapper = styled.div`
-//   display: flex;
-//   width: 100%;
-//   flex-wrap: wrap;
-//   ${tablet({ padding: "10px", flexDirection: "column" })}
-// `;
 
-// const LeftWrapper = styled.div`
-//   flex: 2;
-//   flex-wrap: wrap;
-//   margin: 10px 10px;
-//   background-color: white;
-//   ${mobile({ padding: "10px", width: "100%" })}
-// `;
-// const RightWrapper = styled.div`
-//   flex: 1;
-//   flex-wrap: wrap;
-// `;
-// const Coupan = styled.div`
-//   display: flex;
-//   background-color: white;
-//   height: 150px;
-//   justify-content: space-between;
-//   margin: 10px 10px;
-//   ${tablet({ margin: "0px 60px" })}
-// `;
-
-// const CoupanTitle = styled.div`
-//   text-align: start;
-//   margin-right: 50px;
-// `;
-
-// const ApplyCoupanTitle = styled.h3`
-//   ${mobile({ marginLeft: "20px" })}
-// `;
-
-// const CoupanInput = styled.input`
-//   width: 280px;
-//   padding: 5px;
-//   ${mobile({ margin: "20px" })}
-// `;
-
-// const View = styled.button`
-//   color: red;
-//   border: none;
-//   margin-top: 20px;
-//   cursor: pointer;
-//   background-color: white;
-// `;
-
-// const Apply = styled.button`
-//   margin-top: 25px;
-//   cursor: pointer;
-//   color: white;
-//   background-color: #008ecc;
-//   padding: 5px 5px;
-//   border: none;
-//   border-radius: 5px;
-//   ${tablet({ display: "flex" })}
-// `;
-
-// const FullPayment = styled.div`
-//   background-color: white;
-//   margin: 20px 10px;
-//   padding: 2px;
-// `;
-// const Payment = styled.div`
-//   display: flex;
-//   justify-content: space-around;
-//   align-items: flex-start;
-// `;
-
-// const PlaceOrder = styled.button`
-//   width: 250px;
-//   color: white;
-//   background-color: #008ecc;
-//   padding: 10px;
-//   border: none;
-//   border-radius: 5px;
-//   font-size: 15px;
-// `;
-
-// const BasketWrapper = styled.div`
-//   width: 100%;
-//   display: flex;
-//   align-items: center;
-//   justify-content: space-between;
-// `;
-// const BasketItem = styled.h4`
-//   margin: 20px 20px;
-//   ${mobile({ flexDirection: "column" })}
-// `;
-
-// const ItemWrapper = styled.div`
-//   margin-left: 50px;
-//   width: 90%;
-// `;
-// const Item = styled.div`
-//   display: flex;
-//   width: 90%;
-// `;
-// const ItemImg = styled.img`
-//   padding: 50px;
-// `;
-
-// const Left = styled.div`
-//   flex: 1;
-//   ${mobile({ margin: "0", flexDirection: "column", width: "100%" })}
-// `;
-// const Mid = styled.div`
-//   flex: 1;
-//   margin-top: 50px;
-// `;
-// const Right = styled.div`
-//   flex: 1;
-//   display: flex;
-//   margin-left: 100px;
-//   margin-top: 100px;
-//   ${mobile({ margin: "10px 0px", flexDirection: "column", width: "100%" })}
-// `;
-
-// const Button = styled.button`
-//   border: 1px solid transparent;
-//   width: 40px;
-//   height: 40px;
-//   font-size: 22px;
-//   border-radius: 50%;
-//   color: white;
-//   background-color: #008ecc;
-//   opacity: 0.9;
-//   margin-bottom: 10px;
-// `;
-
-// const Delete = styled.button`
-//   width: 100px;
-//   margin-top: 20px;
-//   margin-bottom: 20px;
-// `;
-
-// const Quantity = styled.p`
-//   width: 50px;
-//   ${mobile({ width: "40px" })}
-// `;
-
-// const Title = styled.h4`
-//   text-align: start;
-// `;
-// const Price = styled.h4`
-//   text-align: start;
-// `;
-// const Seller = styled.h6`
-//   text-align: start;
-// `;
 
  export default CartL;
 
 
 
-// let cart = [{ name: "sr", price: "25" }, { name: "sr", price: "25" }, { name: "sr", price: "25" }, { name: "sr", price: "25" }, { name: "sr", price: "25" }]
