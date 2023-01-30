@@ -1,14 +1,21 @@
-import { Box, Button, Checkbox, Flex, Grid, GridItem, Heading, Image, Spacer, Text } from '@chakra-ui/react'
+import { Box, Button, Checkbox, Flex, Grid, GridItem, Heading, Image, Input, Spacer, Text } from '@chakra-ui/react'
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useLocation, useParams, useSearchParams } from 'react-router-dom'
-import { getProducts } from '../Redux/AppReducer/action'
+import { getProducts, getProductSort } from '../Redux/AppReducer/action'
 import { addCart, getCart } from '../Redux/CartReducer/action'
 
 const Product = () => {
+  const [serachParams, setsearchParams] = useSearchParams();
+  
   const fashionData = useSelector(store => store.AppReducer.data)
 console.log("fashionData",fashionData)
+const initialCat = serachParams.getAll("category")
+const [category,setInitialCategory]=useState(initialCat || "")
+
+const initialsort = serachParams.getAll("sort")
+const [sort,setSort]=useState(initialsort || "")
 
 // const fdata=fashionData.fashion
 //   console.log("fdata", fdata)
@@ -17,25 +24,60 @@ console.log("fashionData",fashionData)
   const dispatch = useDispatch()
   const location = useLocation()
   const [datasearchParams] = useSearchParams()
-const [fdata,setFdata]=useState([])
-  useEffect(() => {
-  dispatch(getProducts)  
-
-  // axios.get("https://lonely-fish-khakis.cyclic.app/data")
-    //   .then((r) => setFdata(r.data.electronics))
-    //   .catch((e) => {
-    //     console.log(e)
-    //   });
-  }, []);
 
 
-console.log("sd",fdata)
+  // useEffect(() => {
+  // dispatch(getProducts)  
 
+  // }, []);
+
+
+
+
+  const handleSort=(e)=>{
+
+setSort(e.target.value)
+  }
+
+useEffect(()=>{
+  let params={}
+  params.category=category
+  sort && (params.sort = sort)
+  setsearchParams(params)
+},[setsearchParams,sort,category])
+
+useEffect(()=>{
+  if(location || fashionData.length===0){
+      const sortBy=datasearchParams.get("sort")
+      const getfashionProducts={
+          params:{
+            category:datasearchParams.getAll('category'),
+             _sort :sortBy && "price",
+             _order:sortBy
+          }
+      }
+      dispatch(getProducts(getfashionProducts))
+  }
+      },[fashionData.length,dispatch,location.search])
   
-
-
-
   
+  
+      const changeCategory=(e)=>{
+// const newCategory=[...category]
+// if(newCategory.includes(e.target.value)){
+
+//   newCategory.splice(newCategory.indexOf(e.target.value),1)
+// }
+// else{
+//   newCategory.push(e.target.value)
+// }
+// setInitialCategory(newCategory)
+  }
+
+  const handleASC=()=>{
+
+    dispatch(getProductSort)
+  }
   return (
     <Box border={"1px solid red"}>
       <Box style={{border:"1px solid blue",margin:"1%"}}>
@@ -43,10 +85,14 @@ console.log("sd",fdata)
       </Box>
       <Box border={"1px solid green"} margin="1%">
         <Box border={"1px solid green"} margin="1%">
-        <Flex justifyContent="right">
+        <Flex justifyContent="right" gap={"1rem"}>
           <Text>Sort By :</Text>
-          <Button variant='outline' size='sm' >High To Low</Button>
-          <Button variant='outline' size='sm'>Low To High</Button>
+<Button onClick={handleASC}>asc</Button>
+         <Box onChange={handleSort}>
+          
+          <lable>Low to high</lable> <input type="radio" value ="asc" name='sortBy'  defaultChecked={sort === "asc"} />
+         <lable>High to low</lable><input type="radio" value ="desc" name='sortBy'  defaultChecked={sort === "desc"}/>
+         </Box>
         </Flex>
         </Box>
         <Box border={"1px solid black"}>
@@ -61,34 +107,43 @@ console.log("sd",fdata)
 
                 <div>
                   <input
+                    onChange={changeCategory}
                     type="checkbox"
-                    value="AMUL"
+                    value="mens-shirts"
+                    checked={category.includes("mens-shirts")}
+                    
                     
                      />
-                  <lable>AMUL</lable>
+                  <lable>mens-shirts</lable>
                 </div>
                 <div>
                   <input
+                  onChange={changeCategory}
                     type="checkbox"
-                    value="GO"
+                    value="mens-shoes"
+                    checked={category.includes("mens-shoes")}
                      />
-                  <lable>GO</lable>
+                  <lable>"mens-shoes"</lable>
                 </div>
 
                 <div >
                   <input
+                  onChange={changeCategory}
                     type="checkbox"
-                    value="PARLE"
+                    value="mens-watches"
+                    checked={category.includes("mens-watches")}
                      />
-                  <lable>PARLE</lable>
+                  <lable>mens-watche</lable>
                 </div>
 
                 <div>
                   <input
+                  onChange={changeCategory}
                     type="checkbox"
-                    value="PATANJALI"
+                    value="womens-watches"
+                    checked={category.includes("womens-watches")}
                      />
-                  <lable>PATANJALI</lable>
+                  <lable>womens-watches</lable>
                 </div>
 
 

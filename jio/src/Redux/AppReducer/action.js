@@ -21,6 +21,11 @@ const getProductError = () => {
     }
 }
 
+const getProductSort = (payload) => {
+  return {
+      type: types.GET_PRODUCT_SORT,payload
+  }
+}
 // const getProducts = (params) => (dispatch) => {
 //     dispatch(getProductRequest())
 //     return axios.get(`https://lonely-fish-khakis.cyclic.app/data`,params)
@@ -35,10 +40,10 @@ const getProductError = () => {
 //     })
     
 // }
-const getProducts = (dispatch) => {
+const getProducts = (params) =>dispatch=> {
     dispatch(getProductRequest());
     return axios
-      .get("https://lonely-fish-khakis.cyclic.app/data")
+      .get(`https://lonely-fish-khakis.cyclic.app/data`,params)
       .then((r) => dispatch(getProductSuccess(r.data.fashion)))
       .catch((e) => {
         dispatch(getProductError());
@@ -48,11 +53,13 @@ const getProducts = (dispatch) => {
   const getFashionProducts = (dispatch) => {
     dispatch(getProductRequest());
     return axios
-      .get("https://lonely-fish-khakis.cyclic.app/data")
+      .get(`https://lonely-fish-khakis.cyclic.app/data`,)
       .then((r) => dispatch(getProductSuccess(r.data.fahion)))
       .catch((e) => {
         dispatch(getProductError());
       });
   }
 
-export { getProducts }
+  
+
+export { getProducts ,getProductSort}
