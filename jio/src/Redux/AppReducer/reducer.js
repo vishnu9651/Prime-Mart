@@ -1,7 +1,7 @@
 import * as types from "./actionTypes"
 
 const initialState = {
-  fruitsveg: [],
+  data: [],
     isLoading: false,
     isError: false
 }
@@ -12,7 +12,7 @@ const reducer = (oldState = initialState, action) => {
         case types.GET_PRODUCT_REQUEST:
             return {...oldState, isLoading: true}
         case types.GET_PRODUCT_SUCCESS:
-            return {...oldState, isLoading:false, fruitsveg: payload}    
+            return {...oldState, isLoading:false, data: payload}    
         case types.GET_PRODUCT_ERROR:
             return {...oldState, isLoading:false, isError: true}        
         default:

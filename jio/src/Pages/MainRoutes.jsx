@@ -14,6 +14,7 @@ const MainRoutes = () => {
       <Routes>
         <Route path="/" element={<Homepage />}></Route>
         <Route path="/product" element={<Product/>}></Route>
+        <Route path="/fashion" element={<Product/>}></Route>
         <Route path="/product/:jiobrand" element={<Product/>}></Route>
         <Route path="/login" element={<Login />}></Route>
         <Route path="/signup" element={<Signup />}></Route>

@@ -21,20 +21,38 @@ const getProductError = () => {
     }
 }
 
-const getProducts = (params) => (dispatch) => {
-    dispatch(getProductRequest())
+// const getProducts = (params) => (dispatch) => {
+//     dispatch(getProductRequest())
+//     return axios.get(`https://lonely-fish-khakis.cyclic.app/data`,params)
+//     .then((r) => {
+//      console.log("30",r)
+//       dispatch(getProductSuccess(r))
+//       console.log("sdfsdfsdaf")
+//     })
+//     .catch(e => {
+//         console.log("err",e)
+//       dispatch(getProductError())
+//     })
+    
+// }
+const getProducts = (dispatch) => {
+    dispatch(getProductRequest());
     return axios
-    // .get(`http://localhost:8080/fruitsveg`, params)
-    .get(`https://finaldata.onrender.com/jiodata`,params)
-    .then(r => {
-     console.log("30",r.data.fruitsveg)
-      dispatch(getProductSuccess(r.data.fruitsveg))
-    })
-    .catch(e => {
-        console.log(e)
-      dispatch(getProductError())
-    })
-}
+      .get("https://lonely-fish-khakis.cyclic.app/data")
+      .then((r) => dispatch(getProductSuccess(r.data.fashion)))
+      .catch((e) => {
+        dispatch(getProductError());
+      });
+  }
 
+  const getFashionProducts = (dispatch) => {
+    dispatch(getProductRequest());
+    return axios
+      .get("https://lonely-fish-khakis.cyclic.app/data")
+      .then((r) => dispatch(getProductSuccess(r.data.fahion)))
+      .catch((e) => {
+        dispatch(getProductError());
+      });
+  }
 
 export { getProducts }
