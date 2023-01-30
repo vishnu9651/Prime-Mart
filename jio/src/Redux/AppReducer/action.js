@@ -9,7 +9,8 @@ const getProductRequest = () => {
 }
 
 const getProductSuccess = (payload) => {
-    return {
+  console.log("pay",payload)  
+  return {
         type: types.GET_PRODUCT_SUCCESS,
         payload,
     }
@@ -41,9 +42,11 @@ const getProductSort = (payload) => {
     
 // }
 const getProducts = (params) =>dispatch=> {
-    dispatch(getProductRequest());
+
+console.log("params",params)
+  dispatch(getProductRequest());
     return axios
-      .get(`https://lonely-fish-khakis.cyclic.app/data`,params)
+      .get(`https://lonely-fish-khakis.cyclic.app/data?_sort=${params._sort}&_order=${params._order}`)
       .then((r) => dispatch(getProductSuccess(r.data.fashion)))
       .catch((e) => {
         dispatch(getProductError());

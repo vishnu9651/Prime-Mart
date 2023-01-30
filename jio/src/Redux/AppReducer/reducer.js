@@ -20,7 +20,7 @@ const reducer = (oldState = initialState, action) => {
         const sort=initialState.data.sort((a, b) => {
             return a.price - b.price;
         });   
-     return {...oldState,data:sort}
+     console.log("sort",sort)
             default:
             return oldState;    
     }
