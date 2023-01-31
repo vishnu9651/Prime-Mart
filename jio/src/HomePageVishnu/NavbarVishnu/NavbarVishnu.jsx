@@ -5,8 +5,10 @@ import { BsCart2 } from "react-icons/bs";
 import MenuVishnu from "./MenuVishnu";
 import { Link } from "react-router-dom";
 import {FaUserAlt} from  "react-icons/fa";
+import { useSelector } from "react-redux";
 const NavbarVishnu=()=>{
-
+ const isAuth = useSelector((store)=>store.AuthReducer.isAuth)
+ const token = useSelector((store)=>store.AuthReducer.token)
 
 
     
@@ -20,6 +22,12 @@ const NavbarVishnu=()=>{
     <Box marginTop={"15px"}>
         <Flex   gap={"2rem"}>
             <Box>
+                {
+                    isAuth ? <Link to=""> <Flex  padding={"12px"} > <Box><FaUserAlt size={"25"} color="white" /></Box>
+                    <Box marginLeft={"5px"} display={{base:"none",sm:"none",md:"none",lg:"inline"}}  >{token.name}</Box></Flex></Link>:
+                     <Link to="/signup"> <Flex  padding={"12px"} > <Box><FaUserAlt size={"25"} color="white" /></Box>
+                     <Box marginLeft={"5px"} display={{base:"none",sm:"none",md:"none",lg:"inline"}}  >Sign in</Box></Flex></Link>
+                }
             <Link to="/signup"> <Flex  padding={"12px"} > <Box><FaUserAlt size={"25"} color="white" /></Box>
              <Box marginLeft={"5px"} display={{base:"none",sm:"none",md:"none",lg:"inline"}}  >Sign in</Box></Flex></Link>
                 </Box>
