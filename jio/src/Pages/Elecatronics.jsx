@@ -65,14 +65,14 @@ const Electronics = () => {
   }
 
   return (
-    <Box border={"1px solid red"} fontSize="lg" width={{base:"100%",sm:"70%",md:"55%",lg:"100%"}} backgroundColor="#f3f3f3">
-      <Box style={{ border: "1px solid blue", margin: "1%" }}>
+    <Box  fontSize="lg" width={{base:"100%",sm:"70%",md:"100%",lg:"100%"}} backgroundColor="#f3f3f3">
+      <Box style={{  margin: "1%" }}>
         <Image m="auto" src='https://www.jiomart.com/images/category/2/groceries-20210201.jpeg' />
       </Box>
-      <Box border={"1px solid green"} margin="1%">
-        <Box border={"1px solid green"} margin="1%" p="1%" w={{base:"95%",sm:"65%",md:"95%",lg:"100%"}}>
+      <Box  margin="1%">
+        <Box  margin="1%" p="1%" w={{base:"66%",sm:"65%",md:"95%",lg:"100%"}}>
           <Flex justifyContent="right" gap={"1rem"}>
-            <Text fontWeight={"bold"}>Sort By :</Text>
+            <Text  fontWeight={"bold"} >Sort By :</Text>
 
             <Box onClick={handleSort}>
 
@@ -81,13 +81,13 @@ const Electronics = () => {
             </Box>
           </Flex>
         </Box>
-        <Box border={"1px solid black"} w={{base:"95%",sm:"70%",md:"95%",lg:"100%"}}>
+        <Box  w={{base:"95%",sm:"70%",md:"95%",lg:"100%"}}>
           <Box >
             <Flex  justifyContent={"space-between"}  flexFlow={{base:"column",sm:"column",md:"column",lg:"row"}} >
 
               {/* <FilterComp/> */}
-              <Box  border={"1px solid yellow"}  w={{base:"85%",sm:"45%",md:"55%",lg:"17%"}} ml={"2%"} textAlign="left" lineHeight={"30px"} fontWeight="md">
-                <Box border="1px solid teal" mt={"15px"} mr={"5%"} p="3%" backgroundColor="white" >
+              <Box    w={{base:"85%",sm:"45%",md:"55%",lg:"17%"}} ml={"2%"} textAlign="left" lineHeight={"30px"} fontWeight="md">
+                <Box  mt={"15px"} mr={"5%"} p="3%" backgroundColor="white" >
                   <Heading fontSize="20px" mb="15px" mt="10px">Filter</Heading>
 
 
@@ -128,7 +128,7 @@ const Electronics = () => {
 
 
 
-              <Box border={"1px solid teal"} width={{base:"100%",sm:"90%",md:"100%",lg:"80%"}} margin={"auto"}>
+              <Box  width={{base:"100%",sm:"90%",md:"100%",lg:"80%"}} margin={"auto"}>
                 <Grid margin={"auto"} templateColumns={{base:"repeat(1,1fr)",sm:"repeat(1, 1fr)",md:"repeat(2, 1fr)",lg:"repeat(3, 1fr)" ,xl:"repeat(3, 1fr)" }}   gap={10} >
                   {
                     electronicsData.map(ele => {

@@ -1,5 +1,6 @@
 import { Box } from '@chakra-ui/react'
 import React from 'react'
+import { Link } from 'react-router-dom'
 import DailyKitchenVishnu from '../HomePageVishnu/DailyKitchenVishnu/DailyKitchenVishnu'
 import Footer from '../HomePageVishnu/FooterVishnu/FooterVishnu'
 import HealthAndPersonalVishnu from '../HomePageVishnu/HealthAndPersonalVishnu/HealthAndPersonalVishnu'
@@ -18,20 +19,20 @@ const Homepage = () => {
   return (
     <div >
       <Box>
-      <SliderHomeVishnu />
-      <PosterVishnu />
-      <HomeCarousel />
-      <JioSImPosterVishnu />
+      <Link to="/electronics"><SliderHomeVishnu /></Link>
+      <Link to="/electronics"> <PosterVishnu /></Link>
+      <Link to="/electronics">  <HomeCarousel /></Link>
+      <Link to="/electronics"> <JioSImPosterVishnu /></Link>
       
-      <TreandingBrandVishnu />
-      <ShopFromCategoryVishnu />
-      <HomeAndCleaningVishnu />
-      <SliderCleaningThreeVishnu />
-      <HealthAndPersonalVishnu />
-      <SliderMedicalThreeVishnu />
-      <SliderMobileThreeVishnu />
-      <DailyKitchenVishnu />
-      <Footer />
+      <Link to="/fashion"><TreandingBrandVishnu /></Link>
+      <Link to="/grocery"> <ShopFromCategoryVishnu /></Link>
+      <Link to="/grocery"><HomeAndCleaningVishnu /></Link>
+      <Link to="/grocery"> <SliderCleaningThreeVishnu /></Link>
+      <Link to="/grocery"> <HealthAndPersonalVishnu /></Link>
+      <Link to="/grocery"><SliderMedicalThreeVishnu /></Link>
+      <Link to="/electronics"><SliderMobileThreeVishnu /></Link>
+      <Link to="/"> <DailyKitchenVishnu /></Link>
+      
       </Box>
     </div>
   )

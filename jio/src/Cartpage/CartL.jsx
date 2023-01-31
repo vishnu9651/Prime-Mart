@@ -164,7 +164,7 @@ const CartL = () => {
               </HStack>
               <HStack px='20px' mt='10px'>
               <Text color='black' fontWeight='medium'>Total Amount</Text>
-              <Spacer/>
+               <Spacer/>
               <Text color='black' fontWeight='bold'>{Math.round(products.reduce((a,c)=>a+c.price.mrp,0))}</Text>
               </HStack>
                <Button bg='#008ECC' color='white' alignSelf='right'>Make Payment</Button>
