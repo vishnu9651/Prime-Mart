@@ -1,7 +1,7 @@
 import { login_fail, login_request, login_success } from "./actionTypes"
 import axios from 'axios'
 
-const Login=(payload)=>(dispatch)=>{
+const login=(payload)=>(dispatch)=>{
     dispatch({type:login_request})
     return axios.post('http://localhost:3500/login',payload)
     .then((res)=>{
@@ -13,4 +13,4 @@ const Login=(payload)=>(dispatch)=>{
     })
 }
 
-export {Login}
+export {login}
