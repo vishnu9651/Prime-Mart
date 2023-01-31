@@ -9,13 +9,14 @@ import PaymentPage from "./PaymentPage";
 import Login from "./Login";
 import Fashion from "./Fashion";
 import Electronics from "./Elecatronics";
+import Grocery from "./Gorcery";
 
 const MainRoutes = () => {
   return (
     <div>
       <Routes>
         <Route path="/" element={<Homepage />}></Route>
-        
+        <Route path="/grocery" element={<Grocery/>}></Route>
         <Route path="/fashion" element={<Fashion/>}></Route>
         <Route path="/electronics" element={<Electronics/>}></Route>        
         <Route path="/login" element={<Login />}></Route>

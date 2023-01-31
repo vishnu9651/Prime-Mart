@@ -67,7 +67,19 @@ console.log("params",params)
             dispatch(getProductError());
           });
       }
+
+      const getGroceryProducts = (params) =>dispatch=> {
+
+        console.log("params",params)
+          dispatch(getProductRequest());
+            return axios
+              .get(`https://modern-jersey-bee.cyclic.app/grocery`,params)
+              .then((r) => dispatch(getProductSuccess(r.data)))
+              .catch((e) => {
+                dispatch(getProductError());
+              });
+          }
     
   
 
-export { getProducts ,getElectronicsProducts}
+export { getProducts ,getElectronicsProducts,getGroceryProducts}
