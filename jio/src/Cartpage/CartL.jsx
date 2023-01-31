@@ -165,7 +165,7 @@ const CartL = () => {
               <Spacer/>
               <Text color='black' fontWeight='bold'>{Math.round(products.reduce((a,c)=>a+c.price.mrp,0))-discount}</Text>
               </HStack>
-               <Button bg='#008ECC' color='white' alignSelf='right'>Make payment</Button>
+               <Button bg='#008ECC' color='white' alignSelf='right'>Make Payment</Button>
 
             </Box>
     </Box>
