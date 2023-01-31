@@ -5,6 +5,7 @@ import { mobile, tablet } from "../responsive";
 import './cart.css'
 import {AiFillPlusCircle} from 'react-icons'
 import { Box, Button, Circle, Divider, Flex, HStack, Image, SimpleGrid, Spacer, Text } from "@chakra-ui/react";
+import { Link } from "react-router-dom";
 
 const CartL = () => {
 
@@ -82,7 +83,7 @@ console.log("daa",products)
               <Spacer/>
               <Text color='black' fontWeight='bold'> ₹{Math.round(products.reduce((a,c)=>a+c.price,0))- (+50)}</Text>
               </HStack>
-               <Button bg='#008ECC' color='white' alignSelf='right'>Make Payment</Button>
+             <Link to='/payment'><Button bg='#008ECC' color='white' alignSelf='right'>Make Payment</Button></Link>
 
             </Box>
     </Box>
