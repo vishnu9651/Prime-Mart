@@ -23,13 +23,10 @@ const NavbarVishnu=()=>{
         <Flex   gap={"2rem"}>
             <Box>
                 {
-                    isAuth ? <Link to=""> <Flex  padding={"12px"} > <Box><FaUserAlt size={"25"} color="white" /></Box>
-                    <Box marginLeft={"5px"} display={{base:"none",sm:"none",md:"none",lg:"inline"}}  >{token.name}</Box></Flex></Link>:
-                     <Link to="/signup"> <Flex  padding={"12px"} > <Box><FaUserAlt size={"25"} color="white" /></Box>
-                     <Box marginLeft={"5px"} display={{base:"none",sm:"none",md:"none",lg:"inline"}}  >Sign in</Box></Flex></Link>
+                    isAuth ?<Link> <Flex  padding={"12px"} > <Box><FaUserAlt size={"25"} color="white" /></Box><Box marginLeft={"5px"}>{token.name}</Box> </Flex></Link>:
+                    <Link to="/signup"> <Flex  padding={"12px"} > <Box><FaUserAlt size={"25"} color="white" /></Box> <Box marginLeft={"5px"}>Sign in</Box></Flex></Link>
                 }
-            <Link to="/signup"> <Flex  padding={"12px"} > <Box><FaUserAlt size={"25"} color="white" /></Box>
-             <Box marginLeft={"5px"} display={{base:"none",sm:"none",md:"none",lg:"inline"}}  >Sign in</Box></Flex></Link>
+           
                 </Box>
                 <Link to="/cart"><Box marginTop="8px" marginLeft={"5px"}><BsCart2 size={30}  /> </Box></Link>
                 <Box marginTop="8px" ><MenuVishnu  /></Box>
@@ -43,3 +40,8 @@ const NavbarVishnu=()=>{
 }
 
 export default NavbarVishnu
+
+// isAuth ? <Link to="/signup"> <Flex  padding={"12px"} > <Box><FaUserAlt size={"25"} color="white" /></Box>
+//                     <Box marginLeft={"5px"} display={{base:"none",sm:"none",md:"none",lg:"inline"}}>{token.name}</Box></Flex></Link>:
+//                      <Link to="/signup"> <Flex  padding={"12px"} > <Box><FaUserAlt size={"25"} color="white" /></Box>
+//                      <Box marginLeft={"5px"} display={{base:"none",sm:"none",md:"none",lg:"inline"}}>Sign in</Box></Flex></Link>
