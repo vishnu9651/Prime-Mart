@@ -5,7 +5,7 @@ const login=(payload)=>(dispatch)=>{
     dispatch({type:login_request})
     return axios.post('http://localhost:3500/login',payload)
     .then((res)=>{
-        dispatch({type:login_success,payload:res.data.token})
+        dispatch({type:login_success,payload:res.data})
         console.log(res.data)
 
     }).catch((err)=>{

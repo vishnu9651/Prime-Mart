@@ -1,8 +1,11 @@
 import { Box, Button, FormControl, FormErrorMessage, FormHelperText, FormLabel, Image, Input, SimpleGrid, Stack, Text } from '@chakra-ui/react'
 import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import axios from 'axios'
 const Signup= () => {
+  const navigate = useNavigate()
   const [data,setData] = useState({
     name:'',
     email:'',
@@ -31,6 +34,11 @@ const Signup= () => {
       name,email,number,password,cpassword
     }).then((res)=>{
       console.log(res)
+      navigate('/login')
+      toast.success('Registered Successfully',{
+        position:'top-center'
+    })
+
     }).catch((err)=>{
       console.log(err)
     })
@@ -58,6 +66,7 @@ const Signup= () => {
       </Box>
       </Box>
       </SimpleGrid>
+      <ToastContainer/>
     </div>
   )
 }

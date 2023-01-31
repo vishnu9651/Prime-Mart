@@ -15,6 +15,7 @@ const Login = () => {
   const [show,Setshow] = useState(false)
   
   const handleClick=()=>{
+  
     Setshow(!show)
   }
     const [data,setData] = useState({
@@ -59,7 +60,9 @@ const Login = () => {
           toast.success('Login Successfull',{
             position:'top-center'
         })
+       
           )
+          navigate('/')
           
         }
         else{
