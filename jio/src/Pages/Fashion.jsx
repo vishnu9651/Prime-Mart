@@ -15,7 +15,7 @@ const Fashion = () => {
 
   const initialsort = searchParams.getAll("sort")
   const [sort, setSort] = useState(initialsort[0] || "")
-
+const [cart,setCart]=useState([])
   // const fdata=fashionData.fashion
      console.log("fdata", fashionData)
 
@@ -78,6 +78,15 @@ const Fashion = () => {
     setInitialCategory(newCategory)
   }
 
+  var Cartdata=JSON.parse(localStorage.getItem("cart")) || []
+  const addToCart=(e)=>{
+    Cartdata.push(e)
+    console.log(e)
+    console.log("cart",Cartdata)
+    localStorage.setItem("cart",JSON.stringify(Cartdata))
+  }
+  
+    
   return (
     <Box  fontSize="lg" width={{base:"100%",sm:"70%",md:"100%",lg:"100%"}} backgroundColor="#f3f3f3">
       <Box style={{  margin: "1%" }}>
@@ -166,7 +175,7 @@ const Fashion = () => {
                             <Box ><Heading fontSize="15px" > {ele.title}</Heading> </Box>
                             <Text fontSize="15px" fontWeight="bold" >M.R.P: {ele.price}</Text>
                           </Box>
-                          <Box ><Button colorScheme='blue' w="80%" m="5%" >Add To Cart</Button></Box>
+                          <Box ><Button colorScheme='blue' w="80%" m="5%" onClick={()=>addToCart(ele)}>Add To Cart</Button></Box>
                         </GridItem>
                       )
                     })}
