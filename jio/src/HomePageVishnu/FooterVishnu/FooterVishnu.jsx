@@ -7,10 +7,10 @@ const Footer=()=>{
     return(<div>
 
         
-        <Box className="FooterMain"  >
+        <Box className="FooterMain"   >
 <Flex fontSize={"small"} justifyContent="space-between" gap={"7rem"} textAlign="left">
-    <Box w="30%" >
-        <Heading size="sm" color={"black"} marginBottom={"7px"}>MOST POPULAR CATEGORIES</Heading>
+    <Box w="33%" >
+        <Heading size="sm" color={"black"} marginBottom={"7px"}>POPULAR CATEGORIES</Heading>
     <Text>Staples</Text>
     <Text>Beverages</Text>
     <Text>Personal Care</Text>
@@ -20,7 +20,7 @@ const Footer=()=>{
     <Text>Snacks & Branded Foods</Text>
     <Text>Dairy & Bakery</Text>
     </Box>
-    <Box w="30%" >
+    <Box display={{base:"none",sm:"none",md:"inline",lg:"inline"}} w="30%" >
         <Heading size="sm" color={"black"} marginBottom={"7px"} >CUSTOMER SERVICES</Heading>
         <Text>About Us</Text>
         <Text>FAQ</Text>

@@ -1,6 +1,7 @@
 
 import "./SliderVishnu.css"
 import SimpleImageSlider from "react-simple-image-slider";
+import { Box } from "@chakra-ui/react";
 const images = [
     { url: "https://www.jiomart.com/images/cms/aw_rbslider/slides/1670868281_web.jpg" },
     { url: "https://www.jiomart.com/images/cms/aw_rbslider/slides/1670957636_Bath--Body-Essentials.ai_1680x320.jpg" },
@@ -11,9 +12,9 @@ const images = [
   ];
 const SliderHomeVishnu=()=>{
 
-    return (<div style={{zIndex:-1,overflow:"visible"}}  className="SliderTopVishnu" >
+    return (<Box  width={{base:"100%",sm:"100%",md:"80%",lg:"100%"}}><div style={{zIndex:-1,overflow:"visible"}}  className="SliderTopVishnu" >
 
-<SimpleImageSlider 
+<SimpleImageSlider  
     style={{zIndex:-1}}
     width="100%"
         navSize={40}
@@ -26,6 +27,7 @@ const SliderHomeVishnu=()=>{
 
       />
       
-    </div>)
+    </div>
+    </Box>)
 }
 export default SliderHomeVishnu
