@@ -16,6 +16,9 @@ const getProductSuccess = (payload) => {
     }
 }
 
+
+
+
 const getProductError = () => {
     return {
         type: types.GET_PRODUCT_ERROR
@@ -46,23 +49,25 @@ const getProducts = (params) =>dispatch=> {
 console.log("params",params)
   dispatch(getProductRequest());
     return axios
-      .get(`https://lonely-fish-khakis.cyclic.app/data?_sort=${params._sort}&_order=${params._order}`)
-      .then((r) => dispatch(getProductSuccess(r.data.fashion)))
+      .get(`https://modern-jersey-bee.cyclic.app/fashion`,params)
+      .then((r) => dispatch(getProductSuccess(r.data)))
       .catch((e) => {
         dispatch(getProductError());
       });
   }
 
-  const getFashionProducts = (dispatch) => {
-    dispatch(getProductRequest());
-    return axios
-      .get(`https://lonely-fish-khakis.cyclic.app/data`,)
-      .then((r) => dispatch(getProductSuccess(r.data.fahion)))
-      .catch((e) => {
-        dispatch(getProductError());
-      });
-  }
+  const getElectronicsProducts = (params) =>dispatch=> {
 
+    console.log("params",params)
+      dispatch(getProductRequest());
+        return axios
+          .get(`https://modern-jersey-bee.cyclic.app/electronics`,params)
+          .then((r) => dispatch(getProductSuccess(r.data)))
+          .catch((e) => {
+            dispatch(getProductError());
+          });
+      }
+    
   
 
-export { getProducts ,getProductSort}
+export { getProducts ,getElectronicsProducts}

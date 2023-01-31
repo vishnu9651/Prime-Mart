@@ -4,34 +4,25 @@ import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useLocation, useParams, useSearchParams } from 'react-router-dom'
-import { getProducts, getProductSort } from '../Redux/AppReducer/action'
+import { getElectronicsProducts, getProducts, getProductSort } from '../Redux/AppReducer/action'
 import { addCart, getCart } from '../Redux/CartReducer/action'
 
-const Product = () => {
+const Electronics = () => {
   const [searchParams, setSearchParams] = useSearchParams();
-  const fashionData = useSelector(store => store.AppReducer.data)
+  const electronicsData = useSelector(store => store.AppReducer.data)
   const initialCat = searchParams.getAll("category")
   const [category, setInitialCategory] = useState(initialCat || [])
 
   const initialsort = searchParams.getAll("sort")
   const [sort, setSort] = useState(initialsort[0] || "")
 
-  // const fdata=fashionData.fashion
-  //   console.log("fdata", fdata)
+  // const fdata=electronicsData.fashion
+     console.log("fdata", electronicsData)
 
 
   const dispatch = useDispatch()
   const location = useLocation()
   const [datasearchParams] = useSearchParams()
-
-
-  // useEffect(() => {
-  // dispatch(getProducts)  
-
-  // }, []);
-
-
-
 
   const handleSort = (e) => {
 
@@ -60,7 +51,7 @@ const Product = () => {
   }, [searchParams, sort, category])
 
   useEffect(() => {
-    if (location || fashionData.length === 0) {
+    if (location || electronicsData.length === 0) {
       const sortBy = datasearchParams.get("sort")
       const getfashionProducts = {
         params: {
@@ -69,9 +60,9 @@ const Product = () => {
           _order: sortBy
         }
       }
-      dispatch(getProducts(getfashionProducts))
+      dispatch(getElectronicsProducts(getfashionProducts))
     }
-  }, [fashionData.length, dispatch, location.search])
+  }, [electronicsData.length, dispatch, location.search])
 
 
 
@@ -88,71 +79,61 @@ const Product = () => {
   }
 
   return (
-    <Box border={"1px solid red"}>
+    <Box border={"1px solid red"} fontSize="lg" width={{base:"100%",sm:"70%",md:"55%",lg:"100%"}} backgroundColor="#f3f3f3">
       <Box style={{ border: "1px solid blue", margin: "1%" }}>
         <Image m="auto" src='https://www.jiomart.com/images/category/2/groceries-20210201.jpeg' />
       </Box>
       <Box border={"1px solid green"} margin="1%">
-        <Box border={"1px solid green"} margin="1%">
+        <Box border={"1px solid green"} margin="1%" p="1%" w={{base:"95%",sm:"65%",md:"95%",lg:"100%"}}>
           <Flex justifyContent="right" gap={"1rem"}>
-            <Text>Sort By :</Text>
+            <Text fontWeight={"bold"}>Sort By :</Text>
 
             <Box onClick={handleSort}>
 
-              <lable>Low to high</lable> <input type="radio" value="asc" name='sortBy' defaultChecked={sort === "asc"} />
-              <lable>High to low</lable><input type="radio" value="desc" name='sortBy' defaultChecked={sort === "desc"} />
+              <input type="radio" value="asc" name='sortBy' defaultChecked={sort === "asc"} /> <lable style={{marginRight:"20px"}}>Low to high</lable> 
+              <input type="radio" value="desc" name='sortBy' defaultChecked={sort === "desc"} /><lable style={{marginLeft:"5px"}}>High to low</lable>
             </Box>
           </Flex>
         </Box>
-        <Box border={"1px solid black"}>
+        <Box border={"1px solid black"} w={{base:"95%",sm:"70%",md:"95%",lg:"100%"}}>
           <Box >
-            <Flex w="95%" justifyContent={"space-between"} >
+            <Flex  justifyContent={"space-between"}  flexFlow={{base:"column",sm:"column",md:"column",lg:"row"}} >
 
               {/* <FilterComp/> */}
-              <Box border={"1px solid yellow"}>
-                <Box border="1px solid teal" >
-                  <Heading fontSize="20px">Filter</Heading>
+              <Box  border={"1px solid yellow"}  w={{base:"85%",sm:"45%",md:"55%",lg:"17%"}} ml={"2%"} textAlign="left" lineHeight={"30px"} fontWeight="md">
+                <Box border="1px solid teal" mt={"15px"} mr={"5%"} p="3%" backgroundColor="white" >
+                  <Heading fontSize="20px" mb="15px" mt="10px">Filter</Heading>
 
 
-                  <div>
+                  
+                  
+                  <div >
                     <input
                       onChange={changeCategory}
                       type="checkbox"
-                      value="mens-shirts"
-                      checked={category.includes("mens-shirts")}
-
-
+                      value="smartphones"
+                      checked={category.includes("smartphones")}
                     />
-                    <lable>mens-shirts</lable>
-                  </div>
-                  <div>
-                    <input
-                      onChange={changeCategory}
-                      type="checkbox"
-                      value="mens-shoes"
-                      checked={category.includes("mens-shoes")}
-                    />
-                    <lable>"mens-shoes"</lable>
+                    <lable style={{marginLeft:"10px"}}>Smartphones</lable>
                   </div>
 
                   <div >
                     <input
                       onChange={changeCategory}
                       type="checkbox"
-                      value="mens-watches"
-                      checked={category.includes("mens-watches")}
+                      value="laptops"
+                      checked={category.includes("laptops")}
                     />
-                    <lable>mens-watche</lable>
+                    <lable style={{marginLeft:"10px"}}>Laptops</lable>
                   </div>
-
                   <div>
                     <input
                       onChange={changeCategory}
                       type="checkbox"
-                      value="womens-watches"
-                      checked={category.includes("womens-watches")}
+                      value="home-decoration"
+                      checked={category.includes("home-decoration")}
                     />
-                    <lable>womens-watches</lable>
+                    <lable style={{marginLeft:"10px"}}>Home-decoration</lable>
                   </div>
 
 
@@ -161,21 +142,21 @@ const Product = () => {
 
 
 
-              <Box border={"1px solid teal"} width="80%">
-                <Grid templateColumns='repeat(3, 1fr)' gap={10} >
+              <Box border={"1px solid teal"} width={{base:"100%",sm:"90%",md:"100%",lg:"80%"}} margin={"auto"}>
+                <Grid margin={"auto"} templateColumns={{base:"repeat(1,1fr)",sm:"repeat(1, 1fr)",md:"repeat(2, 1fr)",lg:"repeat(3, 1fr)" ,xl:"repeat(3, 1fr)" }}   gap={10} >
                   {
-                    fashionData.map(ele => {
+                    electronicsData.map(ele => {
                       return (
 
-                        <GridItem key={ele.id} border="1px solid black" mt={"5%"} pt={"7%"} borderRadius="10px" textAlign="center">
+                        <GridItem key={ele.id} border="1px solid black" mt={"5%"} pt={"7%"}  borderRadius="10px" width={{base:"100%",sm:"70%",md:"95%",lg:"100%"}} textAlign="center">
                           <Box lineHeight={"35px"} >
-                            <Box mb={"7%"}>
+                            <Box mb={"7%"} >
                               <Image height={"120px"} src={ele.images[0]} alt="fruits" m="auto" />
                             </Box>
                             <Box ><Heading fontSize="15px" > {ele.title}</Heading> </Box>
                             <Text fontSize="15px" fontWeight="bold" >M.R.P: {ele.price}</Text>
                           </Box>
-                          <Box ><Button colorScheme='blue' w="40%" m="5%" >Add To Cart</Button></Box>
+                          <Box ><Button colorScheme='blue' w="80%" m="5%" >Add To Cart</Button></Box>
                         </GridItem>
                       )
                     })}
@@ -190,4 +171,4 @@ const Product = () => {
   )
 }
 
-export default Product
+export default Electronics

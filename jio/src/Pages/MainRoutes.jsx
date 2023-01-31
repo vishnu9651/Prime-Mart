@@ -5,17 +5,19 @@ import Cart from "./Cart";
 import Homepage from "./Homepage";
 import Signup from "./Signup";
 import PaymentPage from "./PaymentPage";
-import Product from "./Product";
+
 import Login from "./Login";
+import Fashion from "./Fashion";
+import Electronics from "./Elecatronics";
 
 const MainRoutes = () => {
   return (
     <div>
       <Routes>
         <Route path="/" element={<Homepage />}></Route>
-        <Route path="/product" element={<Product/>}></Route>
-        <Route path="/fashion" element={<Product/>}></Route>
-        <Route path="/product/:jiobrand" element={<Product/>}></Route>
+        
+        <Route path="/fashion" element={<Fashion/>}></Route>
+        <Route path="/electronics" element={<Electronics/>}></Route>        
         <Route path="/login" element={<Login />}></Route>
         <Route path="/signup" element={<Signup />}></Route>
         <Route path="/cart" element={<Cart />}></Route>
