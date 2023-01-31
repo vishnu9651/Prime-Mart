@@ -4,7 +4,7 @@ import Navbar from "./Components/Navbar";
 import Footer from "./HomePageVishnu/FooterVishnu/FooterVishnu";
 import SearchVishnu from "./HomePageVishnu/NavbarVishnu/SearchVishnu";
 import MainRoutes from "./Pages/MainRoutes";
-import Product from "./Pages/Product";
+
 import { Search } from "./Pages/SingleProductPage.jsx/Search";
 
 function App() {

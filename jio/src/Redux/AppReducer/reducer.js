@@ -15,7 +15,13 @@ const reducer = (oldState = initialState, action) => {
             return {...oldState, isLoading:false, data: payload}    
         case types.GET_PRODUCT_ERROR:
             return {...oldState, isLoading:false, isError: true}        
-        default:
+     
+     case types.GET_PRODUCT_SORT:
+        const sort=initialState.data.sort((a, b) => {
+            return a.price - b.price;
+        });   
+     console.log("sort",sort)
+            default:
             return oldState;    
     }
 }
