@@ -8,7 +8,7 @@ import { addCart, getCart } from '../Redux/CartReducer/action'
 
 const Product = () => {
   const fashionData = useSelector(store => store.AppReducer.data)
-console.log("fashionData",fashionData)
+//console.log("fashionData",fashionData)
 
 // const fdata=fashionData.fashion
 //   console.log("fdata", fdata)
@@ -29,7 +29,7 @@ const [fdata,setFdata]=useState([])
   }, []);
 
 
-console.log("sd",fdata)
+//console.log("sd",fdata)
 
   
 

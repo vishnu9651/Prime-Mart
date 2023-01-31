@@ -7,6 +7,7 @@ import Signup from "./Signup";
 import PaymentPage from "./PaymentPage";
 import Product from "./Product";
 import Login from "./Login";
+import Privateroute from "../Components/Privateroute";
 
 const MainRoutes = () => {
   return (
@@ -18,7 +19,7 @@ const MainRoutes = () => {
         <Route path="/product/:jiobrand" element={<Product/>}></Route>
         <Route path="/login" element={<Login />}></Route>
         <Route path="/signup" element={<Signup />}></Route>
-        <Route path="/cart" element={<Cart />}></Route>
+        <Route path="/cart" element={<Privateroute><Cart /></Privateroute>}></Route>
         <Route path="/payment" element={<PaymentPage />}></Route>
       </Routes>
     </div>

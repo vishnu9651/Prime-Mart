@@ -94,12 +94,15 @@ const CartL = () => {
         tagline: 'Kubra, Nova & more' 
     }
   ]
- // const [produc,setProducts] = useState()
-  
+  const [data,setData] = useState(products)
+ 
+  const discount= Math.round(products.reduce((a,c)=>a+c.price.mrp,0))-Math.round(products.reduce((a,c)=>a+c.price.cost,0))
   const remove=(e)=>{
-    const new_products = products.filter((el)=>el.id!== e.id)
+    const new_products = data.filter((el)=>el.id!== e.id)
     console.log(new_products)
+    return new_products
   }
+  
   return (
   <>
   <Box w={{sm:'80%',md:"95%",lg:'80%'}}  margin='auto' mt='1cm' spacing='20px'>
@@ -107,7 +110,7 @@ const CartL = () => {
     <Box>
       <Flex>
       <Box>
-        <Text fontWeight='semibold' fontSize='1.4rem'>My Cart()</Text>
+        <Text fontWeight='semibold'  fontSize='1.4rem'>My Cart({products.length})</Text>
       </Box>
       </Flex>
       <Box mt='20px'>
@@ -119,16 +122,16 @@ const CartL = () => {
         <Text fontSize='15px' align='left'>Shop groceries worth ₹1499 & get sugar at ₹9 (Offer is applicable only on products sold by Reliance Retail . For specific exclusions & offer details refer T&C)</Text>
          </Box>
       </Box>
-    { products.map((e,index)=>(
-      <Box key={index} display='flex' px='10px' >
+    { data.map((e,index)=>(
+      <Box key={index} display='flex' border='1px' px='10px' >
         <Box display='flex' mt='1cm'  justifyContent='space-between' w={{sm:'60%',md:"50%",lg:'50%'}} >
           
          <Box>
           <Image boxSize='100px' src={e.detailUrl}></Image>
          </Box>
-         <Spacer/>
+        
          <Box>
-          <Text fontSize={{sm:'6px',md:"15px",lg:"15px"}} fontWeight='medium'>{e.title.shortTitle}</Text>
+          <Text fontSize={{sm:'3px',md:"15px",lg:"15px"}} fontWeight='medium'>{e.title.shortTitle}</Text>
           <Text mt={1} align='left' fontSize={{sm:'6px',md:"15px",lg:"15px"}} fontWeight='medium'>₹{e.price.cost}</Text>
           <Text mt={1} align='left' fontSize={{sm:'6px',md:"15px",lg:"15px"}} fontWeight='medium'>Sold by<span color="blue">Reliance</span></Text>
          </Box>
@@ -154,18 +157,18 @@ const CartL = () => {
               <HStack px='20px' mt='10px'>
               <Text color='grey'>MRP TOTAL</Text>
               <Spacer/>
-              <Text  color='black' fontWeight='bold'>₹55</Text>
+              <Text  color='black' fontWeight='bold'>{Math.round(products.reduce((a,c)=>a+c.price.mrp,0))}</Text>
               </HStack>
               <Divider></Divider>
               <HStack px='20px' mt='10px'>
               <Text color='grey'>PRODUCT DISCOUNT</Text>
               <Spacer/>
-              <Text  color='black' fontWeight='bold' >₹-55</Text>
+              <Text  color='black' fontWeight='bold' >{discount}</Text>
               </HStack>
               <HStack px='20px' mt='10px'>
               <Text color='black' fontWeight='medium'>Total Amount</Text>
               <Spacer/>
-              <Text color='black' fontWeight='bold'>{Math.round(products.reduce((a,c)=>a+c.price.mrp,0))}</Text>
+              <Text color='black' fontWeight='bold'>{Math.round(products.reduce((a,c)=>a+c.price.mrp,0))-discount}</Text>
               </HStack>
                <Button bg='#008ECC' color='white' alignSelf='right'>Make Payment</Button>
 

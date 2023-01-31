@@ -10,11 +10,8 @@ import { Search } from "./Pages/SingleProductPage.jsx/Search";
 function App() {
   return (
     <div className="App">
-      
-      {/* <Navbar /> */}
+      <Navbar />
       <MainRoutes />
-
-
     </div>
   );
 }

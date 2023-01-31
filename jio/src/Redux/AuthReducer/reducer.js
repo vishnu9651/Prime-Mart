@@ -14,7 +14,7 @@ const reducer = (oldState = initialState, action) => {
      case login_request:
       return {...oldState,isLoading:true}
      case login_success:
-     return {...oldState,token:payload}
+     return {...oldState,token:payload,isAuth:true}
      case login_fail:
       return {...oldState,isError:true}
     default:
