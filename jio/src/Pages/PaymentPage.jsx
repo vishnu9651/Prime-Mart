@@ -1,25 +1,27 @@
-import { Alert, AlertIcon, Avatar, Box, Button, Checkbox, Divider, Flex, FormControl, FormErrorMessage, HStack, Image, Input, SimpleGrid, Spacer, Text, VStack } from '@chakra-ui/react'
+import { Alert, AlertDescription, AlertIcon, AlertTitle, Avatar, Box, Button, Checkbox, CloseButton, Divider, Flex, FormControl, FormErrorMessage, HStack, Image, Input, SimpleGrid, Spacer, Text, useDisclosure, VStack } from '@chakra-ui/react'
 import React, { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
+
 
 
 const PaymentPage = () => {
   const [input, setInput] = useState('')
-
+  const navigate = useNavigate()
   const handlechange = (e) => setInput(e.target.value)
   const isError = input === ''
 
-  const alert=()=>{
-    <Alert status='success'>
-    <AlertIcon />
-    Data uploaded to the server. Fire on!
-  </Alert>
-
+  const Alert=()=>{
+   alert('Order Placed Sucessfull !')
+   navigate('/')
   }
+  const {
+    isOpen: isVisible,
+    onClose,
+    onOpen,
+  } = useDisclosure({ defaultIsOpen: true })
+   
   return (
     <div>
-      <Flex bg='#008ECC'  py='10px'>
-       <Image  pl='25%' src='https://www.jiomart.com/msassets/jiomart_logo_beta.svg' size={{sm:'sm',md:"sm"}}></Image>
-      </Flex>
       <Flex mt='10px'>
         <Text color='black' fontWeight='semibold' fontSize={{sm:'20px',md:'20px',lg:'30px'}} pl={{sm:'1cm',md:"1cm",lg:'4cm'}}>Order Summary</Text>
         <Spacer/>
@@ -98,8 +100,11 @@ const PaymentPage = () => {
               <Text color='black' fontWeight='medium'>Total Amount</Text>
               <Spacer/>
               <Text color='black' fontWeight='bold'>₹55</Text>
-              </HStack>
-               <Button bg='#008ECC' color='white' alignSelf='right'>Make Payment</Button>
+              </HStack>{
+          
+                <Button bg='#008ECC' color='white' alignSelf='right' onClick={Alert}>Make Payment</Button>
+              }
+               
 
             </Box>
         </Box>
