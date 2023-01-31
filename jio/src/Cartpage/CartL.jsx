@@ -123,7 +123,7 @@ const CartL = () => {
          </Box>
       </Box>
     { data.map((e,index)=>(
-      <Box key={index} display='flex' border='1px' px='10px' >
+      <Box key={index} display='flex' px='10px' >
         <Box display='flex' mt='1cm'  justifyContent='space-between' w={{sm:'60%',md:"50%",lg:'50%'}} >
           
          <Box>
@@ -139,11 +139,6 @@ const CartL = () => {
         </Box>
          <Box   mt='1cm' w='50%'>
           <Button bg='lightblue' ml='50%' borderRadius='20px' onClick={()=>remove(e)}>Remove</Button>
-          <Box display='flex' >
-         <Circle  bg='lightblue'   size='30px' ml='60%' mt='25%' as='button'><AddIcon/></Circle> 
-          <Text px='5px' mt='25%'>1</Text>
-          <Circle bg='lightblue' size='30px'  mt='25%' as='button'><MinusIcon /></Circle>
-          </Box>
          </Box>
         
       </Box>
