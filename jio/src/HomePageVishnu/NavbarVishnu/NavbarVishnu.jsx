@@ -9,10 +9,8 @@ import { useSelector } from "react-redux";
 const NavbarVishnu=()=>{
  const isAuth = useSelector((store)=>store.AuthReducer.isAuth)
  const token = useSelector((store)=>store.AuthReducer.token)
-
-
-    
-
+ var products=JSON.parse(localStorage.getItem("cart"))
+console.log("no",products.length)
     return (
     <Box  width={{base:"100%",sm:"80%",md:"100%",lg:"100%"}}>
     <div style={{overflow: "visible"}} >
@@ -23,15 +21,12 @@ const NavbarVishnu=()=>{
         <Flex   gap={"2rem"}>
             <Box>
                 {
-                    isAuth ? <Link to=""> <Flex  padding={"12px"} > <Box><FaUserAlt size={"25"} color="white" /></Box>
-                    <Box marginLeft={"5px"} display={{base:"none",sm:"none",md:"none",lg:"inline"}}  >{token.name}</Box></Flex></Link>:
-                     
-                     <Link to="/signup"> <Flex  padding={"12px"} > <Box><FaUserAlt size={"25"} color="white" /></Box>
-                     <Box marginLeft={"5px"} display={{base:"none",sm:"none",md:"none",lg:"inline"}}  >Sign in</Box></Flex></Link>
+                    isAuth ?<Link> <Flex  padding={"12px"} > <Box><FaUserAlt size={"25"} color="white" /></Box><Box marginLeft={"5px"}>{token.name}</Box> </Flex></Link>:
+                    <Link to="/signup"> <Flex  padding={"12px"} > <Box><FaUserAlt size={"25"} color="white" /></Box> <Box marginLeft={"5px"}>Sign in</Box></Flex></Link>
                 }
-            
+           
                 </Box>
-                <Link to="/cart"><Box marginTop="8px" marginLeft={"5px"}><BsCart2 size={30}  /> </Box></Link>
+                <Link to="/cart"><Flex><Box marginTop="8px" marginLeft={"5px"}><BsCart2 size={30}  /></Box><Box >{products.length} </Box></Flex></Link>
                 <Box marginTop="8px" ><MenuVishnu  /></Box>
                 </Flex></Box>
    
