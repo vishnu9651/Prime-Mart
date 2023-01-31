@@ -16,7 +16,7 @@ const Electronics = () => {
   const initialsort = searchParams.getAll("sort")
   const [sort, setSort] = useState(initialsort[0] || "")
 
-  // const fdata=electronicsData.fashion
+  
      console.log("fdata", electronicsData)
 
 
@@ -27,20 +27,6 @@ const Electronics = () => {
   const handleSort = (e) => {
 
     setSort(e.target.value)
-    
-
-  //   if (sort === "asc") {
-  //     let sortdata = mainData.sort((a, b) => {
-  //       return (a.price - b.price)
-  //     })
-  //     setMainData(sortdata)
-  //   }
-  //   else {
-  //     let sortdata = mainData.sort((a, b) => {
-  //       return (b.price - a.price)
-  //     })
-  //     setMainData(sortdata)
-  //   }
    }
 
   useEffect(() => {
