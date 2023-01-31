@@ -148,7 +148,7 @@ const CartL = () => {
     </Box>
     <Box >
     <Box py='10px' px='30px' mt='1cm'>
-              <Text align ='left' mt='1cm' fontSize='20px' fontWeight='medium'>Payment Details</Text>
+              <Text align ='left' mt='1cm' fontSize='20px' fontWeight='medium'>Payment Detail</Text>
               <HStack px='20px' mt='10px'>
               <Text color='grey'>MRP TOTAL</Text>
               <Spacer/>
