@@ -56,8 +56,8 @@ const Signup= () => {
         <Text fontWeight='medium' fontSize='2xl'>Sign Up</Text> 
               <Text>Please enter your details</Text></FormLabel>
               <Input  mt={4} name='name' value={data.name} onChange={getdata} placeholder='Your First Name'></Input>
-              <Input  mt={4} name='email' value={data.email} onChange={getdata} placeholder='Mobile No.'></Input>
-              <Input mt={4} name='number' value={data.number} onChange={getdata} placeholder='Enter your Email id' ></Input>
+              <Input  mt={4} name='email' value={data.email} onChange={getdata} placeholder='Email'></Input>
+              <Input mt={4} name='number' value={data.number} onChange={getdata} placeholder='Mobile No.' ></Input>
               <Input mt={4} name='password' value={data.password} onChange={getdata} placeholder='Enter your password'></Input>
               <Input mt={4} name='cpassword' value={data.cpassword} onChange={getdata} placeholder='Enter you password again'></Input>
               <Link to=""><Button mt={4} w='full' onClick={sendData} >Submit</Button></Link>

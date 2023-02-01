@@ -35,7 +35,7 @@ const Login = () => {
           }
          })
       }
-      //console.log(data)
+    
     
       const sendData=(e)=>{
         e.preventDefault()
@@ -56,12 +56,8 @@ const Login = () => {
         // })
         if(email && password){
           dispatch(login({email,password}))
-          .then(()=>
-          toast.success('Login Successfull',{
-            position:'top-center'
-        })
        
-          )
+          
           
           
         }
