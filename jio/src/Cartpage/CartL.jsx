@@ -9,7 +9,7 @@ import { Link } from "react-router-dom";
 
 const CartL = () => {
 
-  var products=JSON.parse(localStorage.getItem("cart"))
+  var products=JSON.parse(localStorage.getItem("cart")) ||[]
 console.log("daa",products)
   
   const [data,setData] = useState(products)

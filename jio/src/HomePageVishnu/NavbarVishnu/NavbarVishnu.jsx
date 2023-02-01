@@ -9,7 +9,7 @@ import { useSelector } from "react-redux";
 const NavbarVishnu=()=>{
  const isAuth = useSelector((store)=>store.AuthReducer.isAuth)
  const token = useSelector((store)=>store.AuthReducer.token)
- var products=JSON.parse(localStorage.getItem("cart"))
+ var products=JSON.parse(localStorage.getItem("cart"))||0
 console.log("no",products.length)
     return (
     <Box  width={{base:"100%",sm:"80%",md:"100%",lg:"100%"}}>

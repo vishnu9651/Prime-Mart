@@ -5,12 +5,15 @@ import { useNavigate } from 'react-router-dom'
 
 
 const PaymentPage = () => {
+  
+  var products=JSON.parse(localStorage.getItem("cart")) || 0
   const [input, setInput] = useState('')
   const navigate = useNavigate()
   const handlechange = (e) => setInput(e.target.value)
   const isError = input === ''
 
   const Alert=()=>{
+    localStorage.setItem("cart",0)
    alert('Order Placed Sucessfull !')
    navigate('/')
   }
@@ -88,18 +91,18 @@ const PaymentPage = () => {
               <HStack px='20px' mt='10px'>
               <Text color='grey'>MRP TOTAL</Text>
               <Spacer/>
-              <Text  color='black' fontWeight='bold'>₹55</Text>
+              <Text  color='black' fontWeight='bold'>{Math.round(products.reduce((a,c)=>a+c.price,0))}</Text>
               </HStack>
               <Divider></Divider>
               <HStack px='20px' mt='10px'>
               <Text color='grey'>PRODUCT DISCOUNT</Text>
               <Spacer/>
-              <Text  color='black' fontWeight='bold' >₹-55</Text>
+              <Text  color='black' fontWeight='bold' >₹50</Text>
               </HStack>
               <HStack px='20px' mt='10px'>
               <Text color='black' fontWeight='medium'>Total Amount</Text>
               <Spacer/>
-              <Text color='black' fontWeight='bold'>₹55</Text>
+              <Text color='black' fontWeight='bold'>{Math.round(products.reduce((a,c)=>a+c.price,0))- +(50)}</Text>
               </HStack>{
           
                 <Button bg='#008ECC' color='white' alignSelf='right' onClick={Alert}>Make Payment</Button>
