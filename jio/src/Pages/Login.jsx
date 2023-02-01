@@ -35,7 +35,7 @@ const Login = () => {
           }
          })
       }
-      //console.log(data)
+    
     
       const sendData=(e)=>{
         e.preventDefault()
