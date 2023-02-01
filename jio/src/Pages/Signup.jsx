@@ -30,7 +30,7 @@ const Signup= () => {
     e.preventDefault()
     const {name,email,number,password,cpassword} = data
 
-    axios.post('http://localhost:3500/register',{
+    axios.post('https://rose-mysterious-cape-buffalo.cyclic.app/register',{
       name,email,number,password,cpassword
     }).then((res)=>{
       console.log(res)

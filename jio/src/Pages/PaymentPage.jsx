@@ -49,7 +49,7 @@ const PaymentPage = () => {
               <FormErrorMessage>Pincode is required.</FormErrorMessage>
             )
            }
-           <Input  mt={4}  placeholder='Building/Apartment Name'  onChange={handlechange}></Input>
+           <Input  mt={4}  placeholder='Building/ApartmentName'  onChange={handlechange}></Input>
            {
             isError&&(
               <FormErrorMessage>Building and Aparment is required.</FormErrorMessage>
